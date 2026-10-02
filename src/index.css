@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+:root {
+  --ink: #05040b;
+  --pink: #d13cf2;
+  --violet: #8b5cf6;
+  --blue: #2aa8f5;
+}
+html,
+body,
+#root {
+  background: var(--ink);
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.text-gradient {
+  background: linear-gradient(90deg, #d13cf2 0%, #8b5cf6 50%, #2aa8f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-soft {
+  background: linear-gradient(90deg, #f3b8ff 0%, #c9b6ff 55%, #a9c8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-blue {
+  background: linear-gradient(90deg, #2ab8f5 0%, #8b5cf6 55%, #c13cf0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-violet {
+  background: linear-gradient(90deg, #c13cf0 0%, #9b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.logo-gradient {
+  background: linear-gradient(90deg, #2aa8f5 0%, #c13cf0 28%, #f5d2ff 58%, #d13cf2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 8px rgba(209, 60, 242, 0.45));
+}
+.btn-gradient {
+  background: linear-gradient(90deg, #c13cf0 0%, #7a3cf5 55%, #2aa8f5 100%);
+  box-shadow: 0 0 24px rgba(168, 60, 245, 0.4);
+}
+.cta-gradient {
+  background: linear-gradient(90deg, #b62be6 0%, #6a24e8 50%, #1d3fa8 100%);
+}
+.card-glow {
+  background: rgba(13, 11, 26, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 0 40px rgba(120, 60, 245, 0.05);
+}
+.neon-icon-pink {
+  color: #d96bff;
+  filter: drop-shadow(0 0 6px rgba(209, 60, 242, 0.75));
+}
+.neon-icon-blue {
+  color: #4cc3ff;
+  filter: drop-shadow(0 0 6px rgba(42, 168, 245, 0.75));
+}
+.chamfer {
+  clip-path: polygon(7% 0, 100% 0, 100% 88%, 93% 100%, 0 100%, 0 12%);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
