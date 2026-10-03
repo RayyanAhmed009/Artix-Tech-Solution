@@ -6,10 +6,10 @@ import  TiltCard  from './TiltCard';
 export default function ServiceCard({ service, showLink = false }) {
   const Icon = service.icon;
   return (
-    <TiltCard className="card-glow flex flex-col rounded-xl p-5 transition-[border-color,box-shadow] duration-200 hover:border-neon-violet/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.18)] sm:p-6">
+    <TiltCard className="card-glow flex flex-col rounded-xl p-5 transition-[border-color,box-shadow] duration-200 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(139,92,246,0.18)] sm:p-6">
       <div style={{ transform: 'translateZ(40px)' }}>
         <Icon
-          className={`h-9 w-9 ${service.tone === 'pink' ? 'neon-icon-pink' : 'neon-icon-blue'}`}
+          className={`h-11 w-11 ${service.tone === 'pink' ? 'neon-icon-pink' : 'neon-icon-blue'}`}
           strokeWidth={1.4}
           aria-hidden="true"
         />
@@ -17,7 +17,7 @@ export default function ServiceCard({ service, showLink = false }) {
       <h3 className="mt-6 text-[15px] font-semibold text-white" style={{ transform: 'translateZ(25px)' }}>
         {service.title}
       </h3>
-      <p className="mt-2.5 text-[13px] leading-relaxed text-white/60">{service.description}</p>
+      <p className="mt-2.5 text-[15px] leading-relaxed text-white/60">{service.description}</p>
       {showLink && (
         <Link
           to="/contact"

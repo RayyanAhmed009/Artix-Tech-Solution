@@ -14,7 +14,7 @@ function SiteLayout() {
     <>
     <div className="min-h-screen w-full overflow-x-hidden bg-ink text-white">
       <Navbar />
-      <main>
+      <main className="pt-20">
         <Outlet />
       </main>
       <Footer />

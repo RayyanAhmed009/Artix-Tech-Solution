@@ -34,16 +34,16 @@ export default function Hero3D() {
         className="relative h-full w-full"
       >
         {/* Back orbit rings */}
-        <div
+        {/* <div
           className="absolute inset-[6%] rounded-full border border-neon-blue/25 animate-spin-slow"
           style={{ transform: 'translateZ(-80px)', borderTopColor: 'rgba(209,60,242,0.7)' }}
           aria-hidden="true"
-        />
-        <div
+        /> */}
+        {/* <div
           className="absolute inset-[16%] rounded-full border border-neon-violet/25 animate-spin-slower"
           style={{ transform: 'translateZ(-40px)', borderRightColor: 'rgba(42,168,245,0.8)' }}
           aria-hidden="true"
-        />
+        /> */}
 
         {/* Floating logo */}
         <motion.img
@@ -56,11 +56,11 @@ export default function Hero3D() {
         />
 
         {/* Platform glow */}
-        <div
+        {/* <div
           className="absolute bottom-[10%] left-1/2 h-[14%] w-[70%] rounded-[50%] border border-neon-pink/40"
           style={{ transform: 'translateX(-50%) translateZ(20px) rotateX(70deg)', boxShadow: '0 0 60px rgba(209,60,242,0.45)' }}
           aria-hidden="true"
-        />
+        /> */}
       </motion.div>
     </div>
   );
