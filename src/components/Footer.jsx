@@ -28,7 +28,7 @@ const scrollTop = () => {
 };
 
   return (
-    <footer className="relative mt-24 border-t border-white/5 bg-[#06050d]">
+    <footer className="relative mt-24 border-t border-white/5 backdrop-blur-lg">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr_1.4fr] lg:px-10">
         <div>
           <div className="inline-block">
