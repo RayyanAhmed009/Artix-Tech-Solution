@@ -15,7 +15,7 @@ const ease = [0.23, 1, 0.32, 1];
   return (
     <>
       <section className="relative overflow-hidden">
-        {/* <ParticleField className="absolute inset-0" /> */}
+       {/* <ParticleField className="absolute inset-0" /> */}
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 pb-16 pt-14 lg:grid-cols-[1.05fr_1fr] lg:px-10 lg:pt-16">
           <div>
             <motion.p

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { ArrowUpIcon } from 'lucide-react';
 import  Logo  from './Logo';
@@ -6,7 +6,26 @@ import  SocialLinks  from './SocialLinks';
 import { contactInfo, footerServices, navLinks } from '../data/site';
 
 export function Footer() {
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const [showTopButton, setShowTopButton] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setShowTopButton(window.scrollY > 0);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
+const scrollTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
   return (
     <footer className="relative mt-24 border-t border-white/5 bg-[#06050d]">
@@ -76,19 +95,46 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="relative flex items-center justify-center border-t border-white/5 py-6">
-          <p className="text-xs text-white/55">© 2024 Artix Tech Solution. All Rights Reserved.</p>
-          <button
-            type="button"
-            onClick={scrollTop}
-            aria-label="Back to top"
-            className="absolute -top-6 right-0 flex h-11 w-11 items-center justify-center rounded-full border border-neon-blue/30 bg-ink text-neon-blue shadow-[0_0_18px_rgba(42,168,245,0.35)] transition-transform duration-150 ease-out hover:-translate-y-1"
-          >
-            <ArrowUpIcon className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
+     <div className="mx-auto max-w-7xl px-6 lg:px-10">
+  <div className="relative flex items-center justify-center border-t border-white/5 py-6">
+    <p className="text-xs text-white/55">
+      © 2024 Artix Tech Solution. All Rights Reserved.
+    </p>
+
+    {showTopButton && (
+      <button
+        type="button"
+        onClick={scrollTop}
+        aria-label="Back to top"
+        className="
+          fixed
+          bottom-6
+          right-6
+          z-[9999]
+          flex
+          h-12
+          w-12
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-neon-blue/30
+          bg-ink/90
+          text-neon-blue
+          shadow-[0_0_18px_rgba(42,168,245,0.35)]
+          backdrop-blur-md
+          transition-all
+          duration-200
+          hover:-translate-y-1
+          hover:border-neon-blue/60
+          hover:shadow-[0_0_25px_rgba(42,168,245,0.55)]
+        "
+      >
+        <ArrowUpIcon className="h-6 w-6" />
+      </button>
+    )}
+  </div>
+</div>
     </footer>
   );
 }

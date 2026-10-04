@@ -26,7 +26,7 @@ export const navLinks = [
 ];
 
 export const images = {
-  hero: '/assets/back.png',
+  // hero: '/assets/back.png',
   office: 'https://cdn.magicpatterns.com/patterns/generated-images/be2b4ad4-17c8-4ce6-9bb5-8cd7958c8527.jpg',
   mission: 'https://cdn.magicpatterns.com/patterns/generated-images/be892416-25bb-4614-bfbd-710bac890525.jpg',
 };

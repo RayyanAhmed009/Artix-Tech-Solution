@@ -14,7 +14,21 @@
 html,
 body,
 #root {
-  background: var(--ink);
+  min-height: 100vh;
+
+  background-color: #03020a;
+  background-image:
+    linear-gradient(
+      rgba(3, 2, 10, 0.55),
+      rgba(3, 2, 10, 0.55)
+    ),
+    url('/assets/background.png');
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   color: #fff;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -81,3 +95,4 @@ body,
     animation-iteration-count: 1 !important;
   }
 }
+
