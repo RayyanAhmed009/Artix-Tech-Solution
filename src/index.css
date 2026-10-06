@@ -34,13 +34,28 @@ body,
   -webkit-font-smoothing: antialiased;
 }
 .text-gradient {
-  background: linear-gradient(90deg, #d13cf2 0%, #8b5cf6 50%, #2aa8f5 100%);
+  background: linear-gradient(
+    90deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
+
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
 .text-gradient-soft {
-  background: linear-gradient(90deg, #f3b8ff 0%, #c9b6ff 55%, #a9c8ff 100%);
+  background: linear-gradient(
+    90deg,
+    #f3a8ff 0%,
+    #d19aff 30%,
+    #a8a9ff 60%,
+    #9bc8ff 100%
+  );
+
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

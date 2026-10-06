@@ -85,8 +85,8 @@ export const portfolioItems = [
 
 export const contactInfo = [
   { icon: MailIcon, label: 'Email', value: 'info@artixtechsolution.com', href: 'mailto:info@artixtechsolution.com' },
-  { icon: PhoneIcon, label: 'Phone', value: '+92 300 1234567', href: 'tel:+923001234567' },
-  { icon: MapPinIcon, label: 'Location', value: 'Pakistan', href: '' },
+  // { icon: PhoneIcon, label: 'Phone', value: '+92 300 1234567', href: 'tel:+923001234567' },
+  // { icon: MapPinIcon, label: 'Location', value: 'Pakistan', href: '' },
 ];
 
 export const footerServices = ['Graphic Design', 'Website Design', 'Social Media Design', 'Animation', 'Branding'];

@@ -95,7 +95,7 @@ const ease = [0.23, 1, 0.32, 1];
       delay: 0.95,
       ease: [0.22, 1, 0.36, 1],
     }}
-    className="mt-6 max-w-sm text-lg leading-relaxed text-white/90"
+    className="mt-6 max-w-sm text-xl leading-relaxed text-white/90"
   >
     Creative digital solutions that inspire, engage and deliver results.
   </motion.p>
@@ -177,12 +177,12 @@ const ease = [0.23, 1, 0.32, 1];
       className="mt-4 text-3xl font-semibold leading-tight sm:text-[34px]"
     >
       We Provide Best
-      <span className="text-gradient-violet block">
+      <span className="text-[#F648FF] block">
         Services
       </span>
     </h2>
 
-    <p className="mt-6 max-w-[260px] text-sm leading-relaxed text-white/70">
+    <p className="mt-6 max-w-[260px] text-md leading-relaxed text-white/70">
       We offer a wide range of creative and digital services to help your
       brand grow and stand out.
     </p>

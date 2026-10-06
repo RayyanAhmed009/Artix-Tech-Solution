@@ -28,7 +28,8 @@ const scrollTop = () => {
 };
 
   return (
-    <footer className="relative mt-24 border-t border-white/5 backdrop-blur-lg">
+    <>
+    <footer className="relative mt-24 border-t border-white/5 backdrop-blur-lg ">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr_1.4fr] lg:px-10">
         <div>
           <div className="inline-block">
@@ -98,10 +99,14 @@ const scrollTop = () => {
      <div className="mx-auto max-w-7xl px-6 lg:px-10">
   <div className="relative flex items-center justify-center border-t border-white/5 py-6">
     <p className="text-xs text-white/55">
-      © 2024 Artix Tech Solution. All Rights Reserved.
+      © 2026 Artix Tech Solution. All Rights Reserved.
     </p>
 
-    {showTopButton && (
+   
+  </div>
+</div>
+    </footer>
+     {showTopButton && (
       <button
         type="button"
         onClick={scrollTop}
@@ -133,10 +138,8 @@ const scrollTop = () => {
         <ArrowUpIcon className="h-6 w-6" />
       </button>
     )}
-  </div>
-</div>
-    </footer>
-  );
+    </>
+  )
 }
 
 export default Footer;
