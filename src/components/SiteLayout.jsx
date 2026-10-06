@@ -12,12 +12,24 @@ function SiteLayout() {
 
   return (
     <>
-    <div className="min-h-screen w-full overflow-x-hidden bg-ink text-white">
-      <Navbar />
-      <main className="pt-20">
-        <Outlet />
-      </main>
-      <Footer />
+  <div className="relative min-h-[100dvh] w-full overflow-x-hidden text-white bg-[#03020a]">
+      <div 
+        className="fixed inset-0 h-full w-full bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(3, 2, 10, 0.55), rgba(3, 2, 10, 0.55)), url('/assets/background.png')`,
+          transform: 'translateZ(0)' // Mobile background fix ke liye
+        }}
+      />
+
+      {/* 2. Saara Content (z-10 ki waja se background ke upar show hoga) */}
+      <div className="relative z-10 flex min-h-[100dvh] flex-col">
+        <Navbar />
+        <main className="flex-1 pt-20">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+
     </div>
     </>
   );
