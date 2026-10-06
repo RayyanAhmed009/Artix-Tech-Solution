@@ -162,48 +162,54 @@ const ease = [0.23, 1, 0.32, 1];
 
       <StatsBar stats={homeStats} />
 
-      <section className="mx-auto mt-20 grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.8fr_2fr] lg:px-10" aria-labelledby="home-services">
-       <Reveal delay={0}>
-  <p className="text-xs font-semibold tracking-[0.15em] text-white/80">
-    OUR SERVICES
-  </p>
+     <section
+  className="mx-auto mt-20 grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.8fr_2fr] lg:px-10"
+  aria-labelledby="home-services"
+>
+  {/* LEFT CONTENT */}
+  <Reveal direction="left" delay={0}>
+    <p className="text-xs font-semibold tracking-[0.15em] text-white/80">
+      OUR SERVICES
+    </p>
 
-  <h2
-    id="home-services"
-    className="mt-4 text-3xl font-semibold leading-tight sm:text-[34px]"
-  >
-    We Provide Best
-    <span className="text-gradient-violet block">
-      Services
-    </span>
-  </h2>
-
-  <p className="mt-6 max-w-[260px] text-sm leading-relaxed text-white/70">
-    We offer a wide range of creative and digital services to help your
-    brand grow and stand out.
-  </p>
-
-  <GradientButton
-    to="/services"
-    arrow
-    size="sm"
-    className="mt-8"
-  >
-    Explore Services
-  </GradientButton>
-</Reveal>
-
-       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  {homeServices.map((s, i) => (
-    <Reveal
-      key={s.title}
-      delay={i * 0.18}
+    <h2
+      id="home-services"
+      className="mt-4 text-3xl font-semibold leading-tight sm:text-[34px]"
     >
-      <ServiceCard service={s} />
-    </Reveal>
-  ))}
-</div>
-      </section>
+      We Provide Best
+      <span className="text-gradient-violet block">
+        Services
+      </span>
+    </h2>
+
+    <p className="mt-6 max-w-[260px] text-sm leading-relaxed text-white/70">
+      We offer a wide range of creative and digital services to help your
+      brand grow and stand out.
+    </p>
+
+    <GradientButton
+      to="/services"
+      arrow
+      size="sm"
+      className="mt-8"
+    >
+      Explore Services
+    </GradientButton>
+  </Reveal>
+
+  {/* SERVICE CARDS */}
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {homeServices.map((s, i) => (
+      <Reveal
+        key={s.title}
+        direction={i % 2 === 0 ? "right" : "left"}
+        delay={i * 0.15}
+      >
+        <ServiceCard service={s} />
+      </Reveal>
+    ))}
+  </div>
+</section>
 
       <Reveal delay={0}>
   <div className="mt-20">
