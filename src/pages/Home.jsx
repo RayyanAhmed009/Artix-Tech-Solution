@@ -96,7 +96,7 @@ const ease = [0.23, 1, 0.32, 1];
       delay: 0.95,
       ease: [0.22, 1, 0.36, 1],
     }}
-    className="mt-6 max-w-sm text-xl leading-relaxed text-white/90"
+    className="mt-6 max-w-md text-xl tracking-tight leading-relaxed text-white/90"
   >
     Creative digital solutions that inspire, engage and deliver results.
   </motion.p>

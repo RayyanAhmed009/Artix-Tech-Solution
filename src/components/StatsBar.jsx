@@ -12,7 +12,7 @@ export default function StatsBar({ stats }) {
       aria-label="Company stats"
       className="mx-auto max-w-7xl px-6 lg:px-10"
     >
-      <div className="card-glow grid grid-cols-2 rounded-2xl lg:grid-cols-4">
+      <div className="card-glow grid grid-cols-2 rounded-2xl lg:grid-cols-4 border border-[#d96bff50]">
 
         {stats.map((s, i) => {
           const Icon = s.icon;
