@@ -1,6 +1,9 @@
 import {
   AwardIcon,
+  BadgeIcon,
   BriefcaseIcon,
+  ClapperboardIcon,
+  CodeXmlIcon,
   FileTextIcon,
   GemIcon,
   HeadphonesIcon,
@@ -8,13 +11,16 @@ import {
   LayersIcon,
   MailIcon,
   MapPinIcon,
+  MegaphoneIcon,
   MonitorIcon,
   PenToolIcon,
   PhoneIcon,
   SmartphoneIcon,
   SmileIcon,
   SparklesIcon,
+  SquareTextIcon,
   UserRoundIcon,
+  VideoIcon,
 } from 'lucide-react';
 
 export const navLinks = [
@@ -46,23 +52,25 @@ export const aboutStats = [
 ];
 
 export const homeServices = [
-  { icon: PenToolIcon, title: 'Graphic Design', description: 'Creative and professional designs for your brand.', tone: 'pink' },
-  { icon: MonitorIcon, title: 'Website Design', description: 'Responsive and modern websites that convert.', tone: 'blue' },
-  { icon: SmartphoneIcon, title: 'Social Media Design', description: 'Eye-catching posts and banners for your socials.', tone: 'pink' },
-  { icon: SparklesIcon, title: 'Animation', description: 'Stunning animations that bring your ideas to life.', tone: 'pink' },
-  { icon: GemIcon, title: 'Branding', description: 'Logos, identity & branding that represent you.', tone: 'pink' },
-  { icon: FileTextIcon, title: 'Content Writing', description: 'Engaging content that connects with audience.', tone: 'blue' },
+  { icon: PenToolIcon, title: 'Graphic Designing', description: 'Creative and professional designs for your brand.', tone: 'blue' },
+  { icon: MonitorIcon, title: 'Web Designing', description: 'Responsive and modern websites that convert.', tone: 'pink' },
+  { icon: CodeXmlIcon, title: 'Web Development', description: 'Eye-catching posts and banners for your socials.', tone: 'silver' },
+  { icon: VideoIcon, title: 'Video Editing', description: 'Stunning animations that bring your ideas to life.', tone: 'blue' },
+  { icon: SmartphoneIcon, title: 'App Development', description: 'Engaging content that connects with audience.', tone: 'pink' },
+  { icon: MegaphoneIcon, title: 'Digital Marketing', description: 'Engaging content that connects with audience.', tone: 'silver' },
 ];
 
+
 export const allServices = [
-  { icon: PenToolIcon, title: 'Graphic Design', description: 'We create stunning visuals that communicate your message effectively.', tone: 'pink' },
-  { icon: MonitorIcon, title: 'Website Design', description: 'Responsive, modern & user friendly websites that achieve results.', tone: 'blue' },
-  { icon: SmartphoneIcon, title: 'Social Media Design', description: 'Engaging social media posts and banners that boost your brand.', tone: 'pink' },
-  { icon: SparklesIcon, title: 'Animation', description: 'Dynamic animations that bring your ideas to life.', tone: 'blue' },
-  { icon: GemIcon, title: 'Branding & Identity', description: 'We build unique brand identities that make you stand out.', tone: 'pink' },
-  { icon: UserRoundIcon, title: 'Character Design', description: 'Custom characters for games, stories & brands.', tone: 'pink' },
-  { icon: FileTextIcon, title: 'Content & Copywriting', description: 'Powerful content that connects with your audience.', tone: 'pink' },
-  { icon: LayersIcon, title: 'UI/UX Design', description: 'User friendly designs that provide the best experience.', tone: 'pink' },
+  { icon: PenToolIcon, title: 'Graphic Designing', description: 'Creative and professional designs for your brand.', tone: 'blue' },
+  { icon: MonitorIcon, title: 'Web Designing', description: 'Responsive and modern websites that convert.', tone: 'pink' },
+  { icon: CodeXmlIcon, title: 'Web Development', description: 'Eye-catching posts and banners for your socials.', tone: 'silver' },
+  { icon: VideoIcon, title: 'Video Editing', description: 'Stunning animations that bring your ideas to life.', tone: 'blue' },
+  { icon: ClapperboardIcon, title: 'Content Creator', description: 'Logos, identity & branding that represent you.', tone: 'pink' },
+  { icon: SquareTextIcon, title: 'Content & Copywriting', description: 'Engaging content that connects with audience.', tone: 'silver' },
+  { icon: AwardIcon, title: 'Branding', description: 'Engaging content that connects with audience.', tone: 'blue' },
+  { icon: SmartphoneIcon, title: 'App Development', description: 'Engaging content that connects with audience.', tone: 'pink' },
+  { icon: MegaphoneIcon, title: 'Digital Marketing', description: 'Engaging content that connects with audience.', tone: 'silver' },
 ];
 
 export const aboutPoints = [

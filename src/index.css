@@ -86,6 +86,10 @@ body,
   color: #4cc3ff;
   filter: drop-shadow(0 0 6px rgba(42, 168, 245, 0.75));
 }
+.neon-icon-silver{
+  color: #8F9EBE;
+   filter: drop-shadow(0 0 6px rgba(42, 168, 245, 0.75));
+}
 .chamfer {
   clip-path: polygon(7% 0, 100% 0, 100% 88%, 93% 100%, 0 100%, 0 12%);
 }
