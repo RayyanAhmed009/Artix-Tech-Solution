@@ -8,6 +8,7 @@ import  ServiceCard  from '../components/ServiceCard';
 import  CTABanner  from '../components/CTABanner';
 import  Reveal  from '../components/Reveal';
 import { homeServices, homeStats } from '../data/site';
+import Review from '../components/Review';
 
 const ease = [0.23, 1, 0.32, 1];
 
@@ -216,6 +217,10 @@ const ease = [0.23, 1, 0.32, 1];
     <CTABanner />
   </div>
 </Reveal>
+
+ <div className="mt-10">
+    <Review/>
+  </div>
     </>
   );
 }

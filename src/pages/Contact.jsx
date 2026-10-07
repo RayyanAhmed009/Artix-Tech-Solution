@@ -69,7 +69,7 @@ export function Contact() {
 <form
   onSubmit={submit}
   noValidate
-  className="relative overflow-hidden rounded-2xl border border-neon-pink/30 bg-[#0a0916]/80 p-6 shadow-[0_0_40px_rgba(139,92,246,0.12)] sm:p-7"
+  className="relative overflow-hidden rounded-2xl border border-[#d96bff] bg-[#0a0916]/80 p-6 shadow-[0_0_40px_rgba(139,92,246,0.12)] sm:p-7"
 >
   {/* Background Design */}
   <svg
@@ -180,32 +180,52 @@ export function Contact() {
 
   <div className="relative mt-2">
     <select
-      id="subject"
-      value={values.subject}
-      onChange={(e) => update("subject", e.target.value)}
-      aria-invalid={Boolean(errors.subject)}
-      aria-describedby={errors.subject ? "subject-error" : undefined}
-      className={`${inputBase} h-11 w-full appearance-none cursor-pointer
-        rounded-xl border bg-[#0a0916] px-4 pr-10 text-sm
-        text-white outline-none transition-all duration-200
-        ${
-          errors.subject
-            ? "border-red-400/60"
-            : "border-white/10 hover:border-neon-pink/40 focus:border-neon-violet/60"
-        }`}
-    >
-      <option value="" disabled>
-        Select a Service
-      </option>
+  id="subject"
+  value={values.subject}
+  onChange={(e) => update("subject", e.target.value)}
+  aria-invalid={Boolean(errors.subject)}
+  aria-describedby={errors.subject ? "subject-error" : undefined}
+  className={`${inputBase} h-11 w-full appearance-none cursor-pointer
+    rounded-xl border bg-[#0a0916] px-4 pr-10 text-sm
+    text-white outline-none transition-all duration-200
+    ${
+      errors.subject
+        ? "border-red-400/60"
+        : "border-white/10 hover:border-neon-pink/40 focus:border-neon-violet/60"
+    }`}
+>
+  <option value="" disabled className="bg-[#0a0916] text-white/50">
+    Select a Subject
+  </option>
 
-      <option value="graphics-designing">Graphics Designing</option>
-      <option value="app-development">Web Designing</option>
-      <option value="ui-ux-design">Web Development</option>
-      <option value="graphic-design">Graphic Designing</option>
-      <option value="digital-marketing">Digital Marketing</option>
-      <option value="ai-ml">AI & Machine Learning</option>
-      <option value="other">Other</option>
-    </select>
+  <option value="graphics-designing" className="bg-[#0a0916] text-white">
+    Graphics Designing
+  </option>
+  <option value="web-designing" className="bg-[#0a0916] text-white">
+    Web Designing
+  </option>
+  <option value="web-development" className="bg-[#0a0916] text-white">
+    Web Development
+  </option>
+  <option value="digital-marketing" className="bg-[#0a0916] text-white">
+    Digital Marketing
+  </option>
+  <option value="video-editing" className="bg-[#0a0916] text-white">
+    Video Editing
+  </option>
+  <option value="content-creator" className="bg-[#0a0916] text-white">
+    Content Creator
+  </option>
+  <option value="Content-&-Copywriting" className="bg-[#0a0916] text-white">
+    Content & Copywriting
+  </option>
+  <option value="branding" className="bg-[#0a0916] text-white">
+    Branding
+  </option>
+  <option value="app-development" className="bg-[#0a0916] text-white">
+    App Development
+  </option>
+</select>
 
     {/* Dropdown Arrow */}
     <svg

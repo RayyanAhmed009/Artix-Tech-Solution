@@ -26,7 +26,7 @@ import { aboutPoints, aboutStats, images } from '../data/site';
             <ul className="mt-7 space-y-3.5">
               {aboutPoints.map((p) => (
                 <li key={p} className="flex items-center gap-3 text-sm text-white/90">
-                  <CircleCheckIcon className="neon-icon-pink h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+                 <CircleCheckIcon className="neon-icon-pink h-[22px] w-[22px] shrink-0" aria-hidden="true" />
                   {p}
                 </li>
               ))}
@@ -36,10 +36,10 @@ import { aboutPoints, aboutStats, images } from '../data/site';
             </GradientButton>
           </Reveal>
 
-          <Reveal delay={0.08}>
+         <Reveal delay={0.08}>
             <TiltCard intensity={8}>
               <div className="drop-shadow-[0_0_22px_rgba(139,92,246,0.55)]">
-                <div className="chamfer bg-[linear-gradient(135deg,#2aa8f5,#8b5cf6,#d13cf2)] p-[2px]">
+                <div className="chamfer bg-[linear-gradient(135deg,#41CAFF,#8b5cf6,#F35BFF)] p-[4px]">
                   <img
                     src={images.office}
                     alt="Artix Tech Solutions neon-lit creative studio with multiple monitors"

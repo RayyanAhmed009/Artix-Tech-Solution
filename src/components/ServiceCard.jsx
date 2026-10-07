@@ -6,7 +6,7 @@ import  TiltCard  from './TiltCard';
 export default function ServiceCard({ service, showLink = false }) {
   const Icon = service.icon;
   return (
-    <TiltCard className="card-glow flex flex-col rounded-xl border border-[#d96bff] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6">
+    <TiltCard className="card-glow flex flex-col rounded-xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6">
       <div style={{ transform: 'translateZ(40px)' }}>
         <Icon
           className={`h-11 w-11 ${service.tone === 'pink' ? 'neon-icon-pink' : service.tone === 'silver' ? 'neon-icon-silver' : 'neon-icon-blue'}`}

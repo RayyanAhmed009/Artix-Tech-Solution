@@ -3,8 +3,8 @@ import React from 'react';
 const socials = [
   { label: 'Facebook', href: 'https://facebook.com', glyph: 'facebook' },
   { label: 'Instagram', href: 'https://instagram.com', glyph: 'instagram' },
-  { label: 'LinkedIn', href: 'https://linkedin.com', glyph: 'in' },
-  { label: 'Behance', href: 'https://behance.net', glyph: 'Be' },
+  // { label: 'LinkedIn', href: 'https://linkedin.com', glyph: 'in' },
+  // { label: 'Behance', href: 'https://behance.net', glyph: 'Be' },
 ];
 
 export default function SocialLinks({ size = 'md' }) {

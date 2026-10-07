@@ -51,27 +51,105 @@ export const aboutStats = [
   { icon: SmileIcon, value: '99%', label: 'Client Satisfaction', tone: 'pink' },
 ];
 
+
 export const homeServices = [
-  { icon: PenToolIcon, title: 'Graphic Designing', description: 'Creative and professional designs for your brand.', tone: 'blue' },
-  { icon: MonitorIcon, title: 'Web Designing', description: 'Responsive and modern websites that convert.', tone: 'pink' },
-  { icon: CodeXmlIcon, title: 'Web Development', description: 'Eye-catching posts and banners for your socials.', tone: 'silver' },
-  { icon: VideoIcon, title: 'Video Editing', description: 'Stunning animations that bring your ideas to life.', tone: 'blue' },
-  { icon: SmartphoneIcon, title: 'App Development', description: 'Engaging content that connects with audience.', tone: 'pink' },
-  { icon: MegaphoneIcon, title: 'Digital Marketing', description: 'Engaging content that connects with audience.', tone: 'silver' },
+  {
+    icon: PenToolIcon,
+    title: 'Graphic Designing',
+    description: 'Creative and professional graphics that make your brand stand out.',
+    tone: 'blue',
+  },
+  {
+    icon: MonitorIcon,
+    title: 'Web Designing',
+    description: 'Modern, responsive, and user-friendly websites designed to engage visitors.',
+    tone: 'pink',
+  },
+  {
+    icon: CodeXmlIcon,
+    title: 'Web Development',
+    description: 'Fast, scalable, and powerful websites built with modern technologies.',
+    tone: 'silver',
+  },
+  {
+    icon: VideoIcon,
+    title: 'Video Editing',
+    description: 'Professional video editing with smooth transitions and engaging visual effects.',
+    tone: 'blue',
+  },
+  {
+    icon: SmartphoneIcon,
+    title: 'App Development',
+    description: 'Modern and intuitive mobile apps built for seamless user experiences.',
+    tone: 'pink',
+  },
+  {
+    icon: MegaphoneIcon,
+    title: 'Digital Marketing',
+    description: 'Strategic digital marketing solutions that grow your reach and drive results.',
+    tone: 'silver',
+  },
 ];
 
 
 export const allServices = [
-  { icon: PenToolIcon, title: 'Graphic Designing', description: 'Creative and professional designs for your brand.', tone: 'blue' },
-  { icon: MonitorIcon, title: 'Web Designing', description: 'Responsive and modern websites that convert.', tone: 'pink' },
-  { icon: CodeXmlIcon, title: 'Web Development', description: 'Eye-catching posts and banners for your socials.', tone: 'silver' },
-  { icon: VideoIcon, title: 'Video Editing', description: 'Stunning animations that bring your ideas to life.', tone: 'blue' },
-  { icon: ClapperboardIcon, title: 'Content Creator', description: 'Logos, identity & branding that represent you.', tone: 'pink' },
-  { icon: SquareTextIcon, title: 'Content & Copywriting', description: 'Engaging content that connects with audience.', tone: 'silver' },
-  { icon: AwardIcon, title: 'Branding', description: 'Engaging content that connects with audience.', tone: 'blue' },
-  { icon: SmartphoneIcon, title: 'App Development', description: 'Engaging content that connects with audience.', tone: 'pink' },
-  { icon: MegaphoneIcon, title: 'Digital Marketing', description: 'Engaging content that connects with audience.', tone: 'silver' },
+  {
+    icon: PenToolIcon,
+    title: 'Graphic Designing',
+    description: 'Creative and professional graphics that make your brand stand out.',
+    tone: 'blue',
+  },
+  {
+    icon: MonitorIcon,
+    title: 'Web Designing',
+    description: 'Modern, responsive, and user-friendly websites designed to engage visitors.',
+    tone: 'pink',
+  },
+  {
+    icon: CodeXmlIcon,
+    title: 'Web Development',
+    description: 'Fast, scalable, and powerful websites built with modern technologies.',
+    tone: 'silver',
+  },
+  {
+    icon: VideoIcon,
+    title: 'Video Editing',
+    description: 'Professional video editing with smooth transitions and engaging visual effects.',
+    tone: 'blue',
+  },
+  {
+    icon: ClapperboardIcon,
+    title: 'Content Creator',
+    description: 'Creative and engaging content that captures attention and builds your online presence.',
+    tone: 'pink',
+  },
+  {
+    icon: SquareTextIcon,
+    title: 'Content & Copywriting',
+    description: 'Clear and compelling content that connects with your audience and drives engagement.',
+    tone: 'silver',
+  },
+  {
+    icon: AwardIcon,
+    title: 'Branding',
+    description: 'Strong brand identities that create recognition and leave a lasting impression.',
+    tone: 'blue',
+  },
+  {
+    icon: SmartphoneIcon,
+    title: 'App Development',
+    description: 'Modern and intuitive mobile apps built for seamless and engaging user experiences.',
+    tone: 'pink',
+  },
+  {
+    icon: MegaphoneIcon,
+    title: 'Digital Marketing',
+    description: 'Strategic digital marketing solutions that expand your reach and drive real results.',
+    tone: 'silver',
+  },
 ];
+
+
 
 export const aboutPoints = [
   'Creative & Professional Team',
@@ -97,4 +175,4 @@ export const contactInfo = [
   // { icon: MapPinIcon, label: 'Location', value: 'Pakistan', href: '' },
 ];
 
-export const footerServices = ['Graphic Design', 'Website Design', 'Social Media Design', 'Animation', 'Branding'];
+export const footerServices = ['Graphic Designing', 'Web Designing', 'Video Editing', 'Web Development', 'Digital Marketing'];
