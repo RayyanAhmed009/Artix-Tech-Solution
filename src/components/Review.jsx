@@ -84,10 +84,32 @@ const reviews = [
 ];
 
 const CustomerReviewCard = ({ review, index }) => {
-    const fromLeft = index % 2 === 0;
+    const fromTop = index % 2 === 0;
 
     return (
-        <motion.div initial={{ opacity: 0, x: fromLeft ? -100 : 100, scale: 0.94, }} whileInView={{ opacity: 1, x: 0, scale: 1, }} viewport={{ once: false, amount: 0.2, }} transition={{ duration: 0.8, delay: (index % 3) * 0.12, ease: [0.16, 1, 0.3, 1], }} >
+       <motion.div
+  initial={{
+    opacity: 0,
+    x: fromTop ? -100 : 100,
+    y: 60,
+    scale: 0.94,
+  }}
+  whileInView={{
+    opacity: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+  }}
+  viewport={{
+    once: false,
+    amount: 0.2,
+  }}
+  transition={{
+    duration: 0.8,
+    delay: (index % 3) * 0.12,
+    ease: [0.16, 1, 0.3, 1],
+  }}
+>
             <TiltCard
                 className="
           card-glow

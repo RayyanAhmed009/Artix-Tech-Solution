@@ -99,7 +99,7 @@ const scrollTop = () => {
      <div className="mx-auto max-w-7xl px-6 lg:px-10">
   <div className="relative flex items-center justify-center border-t border-white/5 py-6">
     <p className="text-xs text-white/55">
-      © 2026 Artix Tech Solution. All Rights Reserved.
+      © 2026 Artix Tech Solutions. All Rights Reserved.
     </p>
 
    

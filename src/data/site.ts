@@ -161,7 +161,22 @@ export const aboutPoints = [
 export const portfolioFilters = ['All', 'Graphic Design', 'Web Design', 'Social Media', 'Branding', 'Animation'];
 
 export const portfolioItems = [
-  { title: 'Brand Identity Design', category: 'Branding', filter: 'Branding', image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg' },
+   {
+  title: 'Brand Identity Design',
+  category: 'Branding',
+  filter: 'Branding',
+  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  images: [
+    'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
+     'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
+     'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
+     'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
+  ],
+},
   { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },
   { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
   { title: 'Product Poster Design', category: 'Graphic Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/8918f984-b24f-44d1-83e0-3b0f420aa2a0.jpg' },
@@ -170,7 +185,7 @@ export const portfolioItems = [
 ];
 
 export const contactInfo = [
-  { icon: MailIcon, label: 'Email', value: 'info@artixtechsolution.com', href: 'mailto:info@artixtechsolution.com' },
+  { icon: MailIcon, label: 'Email', value: 'info@artixtechsolutions.com', href: 'mailto:info@artixtechsolutions.com' },
   // { icon: PhoneIcon, label: 'Phone', value: '+92 300 1234567', href: 'tel:+923001234567' },
   // { icon: MapPinIcon, label: 'Location', value: 'Pakistan', href: '' },
 ];

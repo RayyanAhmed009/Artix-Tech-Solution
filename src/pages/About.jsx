@@ -14,13 +14,28 @@ import { aboutPoints, aboutStats, images } from '../data/site';
         {/* <ParticleField className="absolute inset-0" count={900} showRings={false} /> */}
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 pb-16 pt-14 lg:grid-cols-2 lg:px-10">
           <Reveal>
-            <p className="text-xs font-semibold tracking-[0.15em] text-neon-pink">WHO WE ARE</p>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              About
-              <span className="text-gradient-blue block">Artix Tech Solution</span>
-            </h1>
+
+<div>
+  <div className="flex items-center gap-2">
+    <p className="text-xs font-semibold tracking-[0.15em] text-neon-pink whitespace-nowrap">
+      WHO WE ARE
+    </p>
+
+    <h1 className="text-3xl font-bold leading-none sm:text-4xl lg:text-4xl">
+      ABOUT
+    </h1>
+  </div>
+
+  <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-5xl lg:text-5xl">
+    <span className="text-gradient-blue">
+      Artix Tech Solutions
+    </span>
+  </h2>
+</div>
+
+
             <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-white/80">
-              Artix Tech Solution is a creative and technology-driven company delivering innovative digital solutions. We
+              Artix Tech Solutions is a creative and technology-driven company delivering innovative digital solutions. We
               combine creativity, technology and strategy to help businesses grow and stand out in the digital world.
             </p>
             <ul className="mt-7 space-y-3.5">
