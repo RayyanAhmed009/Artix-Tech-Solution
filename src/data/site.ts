@@ -158,30 +158,51 @@ export const aboutPoints = [
   '24/7 Support & Communication',
 ];
 
-export const portfolioFilters = ['All', 'Graphic Design', 'Web Design', 'Social Media', 'Branding', 'Animation'];
+export const portfolioFilters = ['All', 'Graphic Designing'];
 
 export const portfolioItems = [
    {
-  title: 'Brand Identity Design',
-  category: 'Branding',
-  filter: 'Branding',
+  title: 'Logo Design',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
   image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
   images: [
-    'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
-     'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
-     'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
-     'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-    'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg',
+   {
+    name: 'EOB Logo',
+    src: '/assets/EOB Logo.png',
+  },
+   {
+    name: 'KASHMATE LOGO Square Black Background',
+    src: '/assets/KASHMATE LOGO Square Black Background.jpg',
+  },
+     {
+    name: 'Konnex Project orange version',
+    src: '/assets/Konnex Project orange version.png',
+  },
+   {
+    name: 'KASHMATE LOGO Square White Background',
+    src: '/assets/KASHMATE LOGO Square White Background.jpg',
+  },
+   {
+    name: 'Konnexa Project Black background',
+    src: '/assets/Konnexa Black background.png',
+  },
+   {
+    name: 'Wizentra Logo',
+    src: '/assets/Wizentra Logo.png',
+  },
+   {
+    name: 'Konnexa Project White background',
+    src: '/assets/Konnexa White background.png',
+  },
   ],
 },
-  { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },
-  { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
-  { title: 'Product Poster Design', category: 'Graphic Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/8918f984-b24f-44d1-83e0-3b0f420aa2a0.jpg' },
-  { title: 'Gaming Character', category: 'Character Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/23dd2dba-f268-47ca-9262-0c4176fb2d0c.jpg' },
-  { title: 'Motion Graphics', category: 'Animation', filter: 'Animation', image: 'https://cdn.magicpatterns.com/patterns/generated-images/d7cf61c5-5c6e-4229-b382-371df7e60448.jpg' },
+
+  // { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },
+  // { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
+  // { title: 'Product Poster Design', category: 'Graphic Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/8918f984-b24f-44d1-83e0-3b0f420aa2a0.jpg' },
+  // { title: 'Gaming Character', category: 'Character Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/23dd2dba-f268-47ca-9262-0c4176fb2d0c.jpg' },
+  // { title: 'Motion Graphics', category: 'Animation', filter: 'Animation', image: 'https://cdn.magicpatterns.com/patterns/generated-images/d7cf61c5-5c6e-4229-b382-371df7e60448.jpg' },
 ];
 
 export const contactInfo = [

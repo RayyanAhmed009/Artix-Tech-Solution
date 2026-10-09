@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, X, ExternalLink } from "lucide-react";
+import { ArrowRight, X, ExternalLink, Maximize2 } from "lucide-react";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import { portfolioFilters, portfolioItems } from "../data/site";
@@ -55,11 +55,10 @@ function Portfolio() {
             role="tab"
             aria-selected={active === filter}
             onClick={() => setActive(filter)}
-            className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium transition-all duration-200 ${
-              active === filter
-                ? "btn-gradient text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
-                : "border border-white/[0.06] bg-white/[0.04] text-white/70 hover:bg-white/[0.08] hover:text-white"
-            }`}
+            className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium transition-all duration-200 ${active === filter
+              ? "btn-gradient text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
+              : "border border-white/[0.06] bg-white/[0.04] text-white/70 hover:bg-white/[0.08] hover:text-white"
+              }`}
           >
             {filter}
           </button>
@@ -105,8 +104,8 @@ function Portfolio() {
                     />
 
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/0 transition-colors duration-300 group-hover:bg-[#090611]/55">
-                      <span className="flex translate-y-3 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white opacity-0 backdrop-blur-md transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
+                      <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white opacity-100 backdrop-blur-md md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                         View Gallery
                         <ExternalLink className="h-4 w-4" />
                       </span>
@@ -216,79 +215,81 @@ function Portfolio() {
               </div>
 
               {/* Gallery Images */}
-<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  {(selectedProject.images || [selectedProject.image]).map(
-    (image, index) => (
-      <motion.div
-        key={`${selectedProject.title}-${image}-${index}`}
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.3,
-          delay: Math.min(index * 0.06, 0.3),
-        }}
-        className="group overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
-      >
-        <button
-          type="button"
-          onClick={() => setPreviewImage(image)}
-          className="block w-full cursor-zoom-in overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink"
-          aria-label="View larger image"
-        >
-          <img
-            src={image}
-            alt={`${selectedProject.title} project ${index + 1}`}
-            loading="lazy"
-            className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </button>
 
-        <div className="flex items-center justify-between px-3 py-3">
-          <p className="text-sm font-medium text-white/80">
-            Project {String(index + 1).padStart(2, "0")}
-          </p>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {selectedProject.images.map((image, index) => (
+                  <div
+                    key={`${image.src}-${index}`}
+                    className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setPreviewImage(image.src)}
+                      className="flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
+                      aria-label={`Preview ${image.name || `Logo ${index + 1}`}`}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.name || `Logo Design ${index + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="max-h-56 w-auto rounded-xl object-contain"
+                      />
+                    </button>
 
-          <span className="text-xs text-neon-pink">
-            {selectedProject.filter}
-          </span>
-        </div>
-      </motion.div>
-    )
-  )}
-</div>
+                    <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
+                      <h3 className="min-w-0 text-sm font-semibold text-white">
+                        {image.name || `Logo Design ${index + 1}`}
+                      </h3>
 
-{/* Full Image Preview */}
-<AnimatePresence>
-  {previewImage && (
-    <motion.div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setPreviewImage(null)}
-    >
-      <button
-        type="button"
-        onClick={() => setPreviewImage(null)}
-        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white transition hover:border-neon-pink hover:text-neon-pink"
-        aria-label="Close image preview"
-      >
-        <X className="h-6 w-6" />
-      </button>
+                      <button
+                        type="button"
+                        onClick={() => setPreviewImage(image.src)}
+                        className="shrink-0 rounded-lg border border-white/10 p-2 text-gray-300 transition hover:border-[#d96bff]/50 hover:text-[#d96bff]"
+                        aria-label="View full-size image"
+                      >
+                        <Maximize2 size={16} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-      <motion.img
-        src={previewImage}
-        alt="Full-size project preview"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.25 }}
-        onClick={(event) => event.stopPropagation()}
-        className="max-h-[88vh] max-w-full rounded-xl object-contain shadow-[0_0_50px_rgba(168,60,245,0.2)]"
-      />
-    </motion.div>
-  )}
-</AnimatePresence>
+
+              {/* Full Image Preview */}
+              <AnimatePresence>
+                {previewImage && (
+                  <motion.div
+                    className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setPreviewImage(null)}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setPreviewImage(null)}
+                      className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/60 p-3 text-white transition hover:border-[#d96bff] hover:text-[#d96bff]"
+                      aria-label="Close image preview"
+                    >
+                      <X size={24} />
+                    </button>
+
+                    <motion.img
+                      key={previewImage}
+                      src={previewImage}
+                      alt="Full-size logo preview"
+                      initial={{ opacity: 0, scale: 0.92 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.92 }}
+                      transition={{ duration: 0.25 }}
+                      onClick={(event) => event.stopPropagation()}
+                      className="max-h-[88vh] max-w-full rounded-xl object-contain shadow-[0_0_50px_rgba(168,60,245,0.2)]"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
 
 
 
