@@ -116,7 +116,7 @@ body,
 @media (max-width: 767px) {
   .mobile-view-hint {
     opacity: 0;
-    animation: showViewHint 3.5s ease 1s forwards;
+    animation: showViewHint 5.5s ease 1s forwards;
   }
 }
 

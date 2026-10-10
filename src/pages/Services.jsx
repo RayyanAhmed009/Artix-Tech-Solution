@@ -24,7 +24,7 @@ function Services() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 lg:px-10" aria-label="All services">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3">
           {allServices.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.04} className="h-full">
               <ServiceCard service={s} showLink />
