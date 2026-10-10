@@ -162,7 +162,7 @@ export const portfolioFilters = ['All', 'Graphic Designing'];
 
 export const portfolioItems = [
    {
-  title: 'Logo Design',
+  title: 'LOGO DESIGN',
   category: 'Graphic Designing',
   filter: 'Graphic Designing',
   image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
@@ -195,6 +195,48 @@ export const portfolioItems = [
     name: 'Konnexa Project White background',
     src: '/assets/Konnexa White background.png',
   },
+  ],
+},
+ {
+  title: 'VECTOR ILLUSTRATIONS',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
+  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  images: [
+   {
+    name: 'Alien Catooo',
+    src: '/assets/vector/Alien Catooo.png',
+  },
+   {
+    name: 'Angry butterfly Coloured Art',
+    src: '/assets/vector/Angry butterfly Coloured Art.png',
+  },
+     {
+    name: 'Shoe Dino',
+    src: '/assets/vector/Shoe Dino.png',
+  },
+
+  ],
+},
+{
+  title: 'ILLUSTRATIONS',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
+  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  images: [
+   {
+    name: 'Girl vector Illustration',
+    src: '/assets/illustrations/Girl vector Illustration.png',
+  },
+   {
+    name: 'Night Painting',
+    src: '/assets/illustrations/Night Painting.png',
+  },
+     {
+    name: 'Ocean Sceneray',
+    src: '/assets/illustrations/Ocean Sceneray.png',
+  },
+
   ],
 },
 
