@@ -236,7 +236,14 @@ export const portfolioItems = [
     name: 'Ocean Sceneray',
     src: '/assets/illustrations/Ocean Sceneray.png',
   },
-
+    {
+    name: 'Girl Portrait',
+    src: '/assets/illustrations/Girl Portrait.png',
+  },
+    {
+    name: 'Flower Vase Painting',
+    src: '/assets/illustrations/Flower Vase Painting.png',
+  },
   ],
 },
 
