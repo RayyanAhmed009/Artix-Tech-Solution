@@ -360,9 +360,44 @@ export const portfolioItems = [
   //   name: "90's Anime Girl Art",
   //   src: '/assets/sketch/90s Anime Girl Art..png',
   // },
+   {
+    name: 'Girl Cartoon Character 2',
+    src: '/assets/sketch/Kongsuni.jpg',
+  },
   ],
 },
-
+{
+  title: 'SKETCH TO COLORS',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
+  image: ['/assets/sketch/Girl Sketched.png'],
+  images: [
+  //  {
+  //   name: 'Anime boy Sketch',
+  //   src: '/assets/sketch/Anime boy sketch.png',
+  // },
+   {
+    name: 'Cartoon Girl Color Art',
+    src: '/assets/sketch to colors/color.jpg',
+  },
+     {
+    name: 'Anime Lavender girl Art',
+    src: '/assets/sketch to colors/Anime Lavender girl Art.png',
+  },
+    {
+    name: 'Cute Girl color art',
+    src: '/assets/sketch to colors/Cute Girl color art.png',
+  },
+  //  {
+  //   name: "90's Anime Girl Art",
+  //   src: '/assets/sketch/90s Anime Girl Art..png',
+  // },
+   {
+    name: 'Ugly Cartoon girl color image',
+     src: '/assets/sketch to colors/Ugly Cartoon girl color image.png',
+  },
+  ],
+},
 
 
   // { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },

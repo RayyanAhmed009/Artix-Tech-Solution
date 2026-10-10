@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, X, ExternalLink, Maximize2 } from "lucide-react";
+import { ArrowRight, X, ExternalLink, Maximize2, ZoomIn } from "lucide-react";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import { portfolioFilters, portfolioItems } from "../data/site";
@@ -196,7 +196,7 @@ function Portfolio() {
                     OUR PORTFOLIO
                   </p>
 
-                  <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+                  <h2 className="mt-2 text-2xl font-bold text-gradient sm:text-2xl">
                     {selectedProject.title}
                   </h2>
 
@@ -227,7 +227,7 @@ function Portfolio() {
                     <button
                       type="button"
                       onClick={() => setPreviewImage(image.src)}
-                      className="flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
+                      className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
                       aria-label={`Preview ${image.name || `Logo ${index + 1}`}`}
                     >
                       <img
@@ -237,6 +237,14 @@ function Portfolio() {
                         decoding="async"
                         className="max-h-56 w-auto rounded-xl object-contain"
                       />
+
+                      {/* Overlay on every image */}
+                      <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
+                        <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                          Click to Zoom-in
+                          <ZoomIn className="h-4 w-4" />
+                        </span>
+                      </div>
                     </button>
 
                     <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
