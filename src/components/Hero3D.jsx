@@ -1,36 +1,84 @@
-import React from 'react';
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import React, { useLayoutEffect, useRef } from 'react';
+import { animate, createSpring, utils } from 'animejs';
 import { images } from '../data/site';
 
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 export default function Hero3D() {
-  const reduce = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [14, -14]), { stiffness: 140, damping: 18 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-18, 18]), { stiffness: 140, damping: 18 });
+  const tiltRef = useRef(null);
+  const imgRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const tilt = tiltRef.current;
+    const img = imgRef.current;
+    if (!tilt || !img) return undefined;
+
+    const reduce = prefersReducedMotion();
+
+    // Keep the logo lifted in 3D (was style={{ transform: 'translateZ(60px)' }})
+    utils.set(img, { translateZ: 60 });
+
+    // Entry: fade + slight scale
+    utils.set(tilt, { opacity: 0, scale: 0.96 });
+    const entry = animate(tilt, {
+      opacity: [0, 1],
+      scale: [0.96, 1],
+      duration: 300,
+      ease: 'cubicBezier(0.23, 1, 0.32, 1)',
+    });
+
+    // Floating logo loop (skipped for reduced motion)
+    let float;
+    if (!reduce) {
+      float = animate(img, {
+        translateY: [0, -16],
+        duration: 3000,
+        ease: 'inOutSine',
+        alternate: true,
+        loop: true,
+      });
+    }
+
+    return () => {
+      entry.cancel();
+      if (float) float.cancel();
+    };
+  }, []);
+
+  const tiltTo = (rx, ry) => {
+    const el = tiltRef.current;
+    if (!el) return;
+    animate(el, {
+      rotateX: rx,
+      rotateY: ry,
+      ease: createSpring({ stiffness: 140, damping: 18 }),
+    });
+  };
 
   const handleMove = (e) => {
-    if (reduce) return;
+    if (prefersReducedMotion()) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    // same mapping as before: y [-0.5,0.5] -> [14,-14], x [-0.5,0.5] -> [-18,18]
+    tiltTo(-28 * y, 36 * x);
   };
 
   return (
     <div
       onMouseMove={handleMove}
       onMouseLeave={() => {
-        x.set(0);
-        y.set(0);
+        if (!prefersReducedMotion()) tiltTo(0, 0);
       }}
       className="relative mx-auto aspect-square w-full max-w-[580px]"
       style={{ perspective: 1200 }}
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-        style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      <div
+        ref={tiltRef}
+        style={{ transformStyle: 'preserve-3d' }}
         className="relative h-full w-full"
       >
         {/* Back orbit rings */}
@@ -46,12 +94,10 @@ export default function Hero3D() {
         /> */}
 
         {/* Floating logo */}
-        <motion.img
+        <img
+          ref={imgRef}
           src={images.hero}
           alt="Glowing 3D Artix 'A' emblem on a holographic platform"
-          animate={reduce ? undefined : { y: [0, -16, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ transform: 'translateZ(60px)' }}
           className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
         />
 
@@ -61,7 +107,7 @@ export default function Hero3D() {
           style={{ transform: 'translateX(-50%) translateZ(20px) rotateX(70deg)', boxShadow: '0 0 60px rgba(209,60,242,0.45)' }}
           aria-hidden="true"
         /> */}
-      </motion.div>
+      </div>
     </div>
   );
 }
