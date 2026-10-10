@@ -246,6 +246,62 @@ export const portfolioItems = [
   },
   ],
 },
+{
+  title: 'BANNER DESIGN',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
+  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  images: [
+   {
+    name: 'FORM 01',
+    src: '/assets/banner/form.png',
+  },
+   {
+    name: 'Fresh Drip',
+    src: '/assets/banner/fresh.png',
+  },
+     {
+    name: 'Game Banner',
+    src: '/assets/banner/Game.png',
+  },
+    {
+    name: 'Neon Social Club',
+    src: '/assets/banner/neon.png',
+  },
+    {
+    name: 'Tactical Warzone',
+    src: '/assets/banner/TACTICAL.png',
+  },
+  {
+    name: 'Velocity',
+    src: '/assets/banner/velocity.jpg',
+  },
+  ],
+},
+{
+  title: 'YOUTUBE THUMBNAIL',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
+  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  images: [
+   {
+    name: 'Gaming Channel Thumbnail',
+    src: '/assets/Thumbnail/Gaming Channel.png',
+  },
+   {
+    name: 'Horror Game Thumbnail',
+    src: '/assets/Thumbnail/Horror.png',
+  },
+     {
+    name: 'Red and Blue Horror Story Thumbnail',
+    src: '/assets/Thumbnail/Red and Blue Horror Story YouTube Thumbnail.png',
+  },
+    {
+    name: 'Red and White Brush Horror Story Thumbnail',
+    src: '/assets/Thumbnail/Red and White Brush Horror Story Thumbnail.png',
+  },
+  ],
+},
 
   // { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },
   // { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
