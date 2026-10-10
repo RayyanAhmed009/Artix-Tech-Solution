@@ -106,7 +106,7 @@ function Portfolio() {
                     {/* Hover Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
                       <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white opacity-100 backdrop-blur-md md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                        View Gallery
+                        Click to View
                         <ExternalLink className="h-4 w-4" />
                       </span>
                     </div>
