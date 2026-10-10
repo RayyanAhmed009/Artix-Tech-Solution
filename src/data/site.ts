@@ -340,10 +340,10 @@ export const portfolioItems = [
   filter: 'Graphic Designing',
   image: ['/assets/sketch/Girl Sketched.png'],
   images: [
-   {
-    name: 'Anime boy Sketch',
-    src: '/assets/sketch/Anime boy sketch.png',
-  },
+  //  {
+  //   name: 'Anime boy Sketch',
+  //   src: '/assets/sketch/Anime boy sketch.png',
+  // },
    {
     name: 'Anime Girl Sketch Art',
     src: '/assets/sketch/Anime Girl Sketch Art.png',
@@ -356,10 +356,10 @@ export const portfolioItems = [
     name: 'Sketch Art 2',
     src: '/assets/sketch/Sketch Art 2.png',
   },
-   {
-    name: "90's Anime Girl Art",
-    src: '/assets/sketch/90s Anime Girl Art..png',
-  },
+  //  {
+  //   name: "90's Anime Girl Art",
+  //   src: '/assets/sketch/90s Anime Girl Art..png',
+  // },
   ],
 },
 
