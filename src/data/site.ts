@@ -165,7 +165,7 @@ export const portfolioItems = [
   title: 'CHARACTER DESIGN',
   category: 'Graphic Designing',
   filter: 'Graphic Designing',
-  image:['/assets/character/winged fairy.png'],
+  image:['/assets/character/work.png'],
   images: [
    {
     name: 'Gaming Channel Thumbnail',
