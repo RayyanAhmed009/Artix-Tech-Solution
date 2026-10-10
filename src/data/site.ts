@@ -168,20 +168,28 @@ export const portfolioItems = [
   image:['/assets/character/work.png'],
   images: [
    {
-    name: 'Gaming Channel Thumbnail',
-    src: '/assets/Thumbnail/Gaming Channel.png',
+    name: '',
+    src: '/assets/character/1.png',
   },
    {
-    name: 'Horror Game Thumbnail',
-    src: '/assets/Thumbnail/Horror.png',
+    name: '',
+    src: '/assets/character/2.png',
   },
      {
-    name: 'Red and Blue Horror Story Thumbnail',
-    src: '/assets/Thumbnail/Red and Blue Horror Story YouTube Thumbnail.png',
+    name: '',
+    src: '/assets/character/3.png',
   },
     {
-    name: 'Red and White Brush Horror Story Thumbnail',
-    src: '/assets/Thumbnail/Red and White Brush Horror Story Thumbnail.png',
+    name: '',
+    src: '/assets/character/4.png',
+  },
+   {
+    name: '',
+    src: '/assets/character/5.png',
+  },
+  {
+    name: '',
+    src: '/assets/character/winged fairy.png',
   },
   ],
 },
@@ -189,35 +197,35 @@ export const portfolioItems = [
   title: 'LOGO DESIGN',
   category: 'Graphic Designing',
   filter: 'Graphic Designing',
-  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  image:['/assets/logo/logo.png'],
   images: [
    {
     name: 'EOB Logo',
-    src: '/assets/EOB Logo.png',
+    src: '/assets/logo/EOB Logo.png',
   },
    {
     name: 'KASHMATE LOGO Square Black Background',
-    src: '/assets/KASHMATE LOGO Square Black Background.jpg',
+    src: '/assets/logo/KASHMATE LOGO Square Black Background.jpg',
   },
      {
     name: 'Konnex Project orange version',
-    src: '/assets/Konnex Project orange version.png',
+    src: '/assets/logo/Konnex Project orange version.png',
   },
    {
     name: 'KASHMATE LOGO Square White Background',
-    src: '/assets/KASHMATE LOGO Square White Background.jpg',
+    src: '/assets/logo/KASHMATE LOGO Square White Background.jpg',
   },
    {
     name: 'Konnexa Project Black background',
-    src: '/assets/Konnexa Black background.png',
+    src: '/assets/logo/Konnexa Black background.png',
   },
    {
     name: 'Wizentra Logo',
-    src: '/assets/Wizentra Logo.png',
+    src: '/assets/logo/Wizentra Logo.png',
   },
    {
     name: 'Konnexa Project White background',
-    src: '/assets/Konnexa White background.png',
+    src: '/assets/logo/Konnexa White background.png',
   },
   ],
 },
@@ -274,7 +282,7 @@ export const portfolioItems = [
   title: 'BANNER DESIGN',
   category: 'Graphic Designing',
   filter: 'Graphic Designing',
-  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+  image:['/assets/banner/banner.png'],
   images: [
    {
     name: 'FORM 01',
@@ -326,6 +334,35 @@ export const portfolioItems = [
   },
   ],
 },
+{
+  title: 'SKETCH ARTWORK',
+  category: 'Graphic Designing',
+  filter: 'Graphic Designing',
+  image: ['/assets/sketch/Girl Sketched.png'],
+  images: [
+   {
+    name: 'Anime boy Sketch',
+    src: '/assets/sketch/Anime boy sketch.png',
+  },
+   {
+    name: 'Anime Girl Sketch Art',
+    src: '/assets/sketch/Anime Girl Sketch Art.png',
+  },
+     {
+    name: 'Girl Cartoon Character',
+    src: '/assets/sketch/Girl Cartoon Character.png',
+  },
+    {
+    name: 'Sketch Art 2',
+    src: '/assets/sketch/Sketch Art 2.png',
+  },
+   {
+    name: "90's Anime Girl Art",
+    src: '/assets/sketch/90s Anime Girl Art..png',
+  },
+  ],
+},
+
 
 
   // { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },

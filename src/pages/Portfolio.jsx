@@ -241,7 +241,7 @@ function Portfolio() {
 
                     <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
                       <h3 className="min-w-0 text-sm font-semibold text-white">
-                        {image.name || `Logo Design ${index + 1}`}
+                        {image.name}
                       </h3>
 
                       <button
