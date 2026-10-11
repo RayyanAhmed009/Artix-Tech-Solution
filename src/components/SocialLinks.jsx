@@ -1,8 +1,8 @@
 import React from 'react';
 
 const socials = [
-  { label: 'Facebook', href: 'https://facebook.com', glyph: 'facebook' },
-  { label: 'Instagram', href: 'https://instagram.com', glyph: 'instagram' },
+  { label: 'Facebook', href: 'https://www.facebook.com/p/Artix-Tech-Solutions-61593953143550/', glyph: 'facebook' },
+  { label: 'Instagram', href: 'https://www.instagram.com/artixtechsolutions/', glyph: 'instagram' },
   { label: 'LinkedIn', href: 'https://linkedin.com', glyph: 'in' },
   { label: 'Behance', href: 'https://behance.net', glyph: 'Be' },
 ];

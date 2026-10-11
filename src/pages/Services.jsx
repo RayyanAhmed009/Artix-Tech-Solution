@@ -12,11 +12,15 @@ function Services() {
         <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.15em] text-neon-pink">OUR SERVICES</p>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              We Provide Best
-              <span className="text-gradient-blue block">Digital Services</span>
-            </h1>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
+            <h1 className="mt-4 text-3xl font-semibold leading-tight sm:text-3xl">
+      We Provide Best
+    </h1>
+           <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-5xl lg:text-5xl">
+    <span className="text-gradient-blue">
+      Digital Services
+    </span>
+  </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 sm:text-base">
               We combine creativity, technology and strategy to deliver exceptional digital solutions.
             </p>
           </Reveal>

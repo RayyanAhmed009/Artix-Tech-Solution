@@ -32,7 +32,7 @@ function Portfolio() {
           className="mt-4 text-4xl font-semibold sm:text-5xl"
         >
           Our Recent{" "}
-          <span className="text-gradient-violet">Work</span>
+          <span className="text-gradient-blue">Work</span>
         </h1>
 
         <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 sm:text-base">
@@ -258,14 +258,14 @@ function Portfolio() {
                         {image.name}
                       </h3>
 
-                      <button
+                      {/* <button
                         type="button"
                         onClick={() => setPreviewImage(image.src)}
                         className="shrink-0 rounded-lg border border-white/10 p-2 text-gray-300 transition hover:border-[#d96bff]/50 hover:text-[#d96bff]"
                         aria-label="View full-size image"
                       >
                         <Maximize2 size={16} />
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 ))}

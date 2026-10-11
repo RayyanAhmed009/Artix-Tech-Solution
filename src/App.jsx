@@ -6,20 +6,25 @@ import  About  from './pages/About.jsx';
 import  Services  from './pages/Services.jsx';
 import  Portfolio  from './pages/Portfolio.jsx';
 import { Contact } from './pages/Contact.jsx';
+import ImageProtection from './components/ImageProtection.jsx';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<SiteLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/" element={<div>Hello World</div>} /> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <ImageProtection />
+
+      <BrowserRouter>
+        <Routes>
+          <Route element={<SiteLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/" element={<div>Hello World</div>} /> */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }

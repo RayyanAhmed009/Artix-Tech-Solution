@@ -162,242 +162,367 @@ export const portfolioFilters = ['All', 'Graphic Designing'];
 
 export const portfolioItems = [
   {
-  title: 'CHARACTER DESIGN',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image:['/assets/character/work.png'],
-  images: [
-   {
-    name: '',
-    src: '/assets/character/1.png',
-  },
-   {
-    name: '',
-    src: '/assets/character/2.png',
-  },
-     {
-    name: '',
-    src: '/assets/character/3.png',
-  },
-    {
-    name: '',
-    src: '/assets/character/4.png',
-  },
-   {
-    name: '',
-    src: '/assets/character/5.png',
+    title: 'HALF BODY CHARACTER',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/character/work.png'],
+    images: [
+      {
+        name: '',
+        src: '/assets/character/1.png',
+      },
+      {
+        name: '',
+        src: '/assets/character/2.png',
+      },
+      {
+        name: '',
+        src: '/assets/character/6.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/character/7.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/character/8.jpg',
+      },
+      // {
+      //   name: '',
+      //   src: '/assets/character/winged fairy.png',
+      // },
+    ],
   },
   {
-    name: '',
-    src: '/assets/character/winged fairy.png',
+    title: 'FULL BODY CHARACTER',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/full body/winged fairy.png'],
+    images: [
+      {
+        name: '',
+        src: '/assets/full body/1.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/full body/2.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/full body/3.png',
+      },
+      {
+        name: '',
+        src: '/assets/full body/4.png',
+      },
+      {
+        name: '',
+        src: '/assets/full body/5.png',
+      },
+      {
+        name: '',
+        src: '/assets/full body/6.png',
+      },
+      {
+        name: '',
+        src: '/assets/full body/7.png',
+      },
+      {
+        name: '',
+        src: '/assets/full body/8.png',
+      },
+      // {
+      //   name: '',
+      //   src: '/assets/character/winged fairy.png',
+      // },
+    ],
   },
-  ],
-},
-   {
-  title: 'LOGO DESIGN',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image:['/assets/logo/logo.png'],
-  images: [
-   {
-    name: 'EOB Logo',
-    src: '/assets/logo/EOB Logo.png',
+  {
+    title: 'PFP',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/pfp/logo.png'],
+    images: [
+      {
+        name: '',
+        src: '/assets/pfp/1.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/pfp/2.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/pfp/3.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/pfp/4.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/pfp/5.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/pfp/6.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/pfp/7.jpg',
+      },
+    ],
   },
-   {
-    name: 'KASHMATE LOGO Square Black Background',
-    src: '/assets/logo/KASHMATE LOGO Square Black Background.jpg',
-  },
-     {
-    name: 'Konnex Project orange version',
-    src: '/assets/logo/Konnex Project orange version.png',
-  },
-   {
-    name: 'KASHMATE LOGO Square White Background',
-    src: '/assets/logo/KASHMATE LOGO Square White Background.jpg',
-  },
-   {
-    name: 'Konnexa Project Black background',
-    src: '/assets/logo/Konnexa Black background.png',
-  },
-   {
-    name: 'Wizentra Logo',
-    src: '/assets/logo/Wizentra Logo.png',
-  },
-   {
-    name: 'Konnexa Project White background',
-    src: '/assets/logo/Konnexa White background.png',
-  },
-  ],
-},
- {
-  title: 'VECTOR ILLUSTRATIONS',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-  images: [
-   {
-    name: 'Alien Catooo',
-    src: '/assets/vector/Alien Catooo.png',
-  },
-   {
-    name: 'Angry butterfly Coloured Art',
-    src: '/assets/vector/Angry butterfly Coloured Art.png',
-  },
-     {
-    name: 'Shoe Dino',
-    src: '/assets/vector/Shoe Dino.png',
-  },
+  {
+    title: 'ILLUSTRATIONS',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/illustrations/Ocean Sceneray.png'],
+    images: [
+      {
+        name: '',
+        src: '/assets/illustrations/1.png',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/2.png',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/3.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/4.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/5.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/6.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/7.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/8.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/9.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/10.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/11.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/12.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/13.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/Night Painting.png',
+      },
 
-  ],
-},
-{
-  title: 'ILLUSTRATIONS',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-  images: [
-   {
-    name: 'Girl vector Illustration',
-    src: '/assets/illustrations/Girl vector Illustration.png',
-  },
-   {
-    name: 'Night Painting',
-    src: '/assets/illustrations/Night Painting.png',
-  },
-     {
-    name: 'Ocean Sceneray',
-    src: '/assets/illustrations/Ocean Sceneray.png',
-  },
-    {
-    name: 'Girl Portrait',
-    src: '/assets/illustrations/Girl Portrait.png',
-  },
-    {
-    name: 'Flower Vase Painting',
-    src: '/assets/illustrations/Flower Vase Painting.png',
-  },
-  ],
-},
-{
-  title: 'BANNER DESIGN',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image:['/assets/banner/banner.png'],
-  images: [
-   {
-    name: 'FORM 01',
-    src: '/assets/banner/form.png',
-  },
-   {
-    name: 'Fresh Drip',
-    src: '/assets/banner/fresh.png',
-  },
-     {
-    name: 'Game Banner',
-    src: '/assets/banner/Game.png',
-  },
-    {
-    name: 'Neon Social Club',
-    src: '/assets/banner/neon.png',
-  },
-    {
-    name: 'Tactical Warzone',
-    src: '/assets/banner/TACTICAL.png',
+      {
+        name: '',
+        src: '/assets/illustrations/Girl Portrait.png',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/Flower Vase Painting.png',
+      },
+    ],
   },
   {
-    name: 'Velocity',
-    src: '/assets/banner/velocity.jpg',
+    title: 'LOGO DESIGN',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/logo/logo.png'],
+    images: [
+      {
+        // name: 'EOB Logo',
+        src: '/assets/logo/EOB Logo.png',
+      },
+      {
+        // name: 'KASHMATE LOGO Square Black Background',
+        src: '/assets/logo/KASHMATE LOGO Square Black Background.jpg',
+      },
+      {
+        // name: 'Konnex Project orange version',
+        src: '/assets/logo/Konnex Project orange version.png',
+      },
+      {
+        // name: 'KASHMATE LOGO Square White Background',
+        src: '/assets/logo/KASHMATE LOGO Square White Background.jpg',
+      },
+      {
+        // name: 'Konnexa Project Black background',
+        src: '/assets/logo/Konnexa Black background.png',
+      },
+      {
+        // name: 'Wizentra Logo',
+        src: '/assets/logo/Wizentra Logo.png',
+      },
+      {
+        // name: 'Konnexa Project White background',
+        src: '/assets/logo/Konnexa White background.png',
+      },
+    ],
   },
-  ],
-},
-{
-  title: 'YOUTUBE THUMBNAIL',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
-  images: [
-   {
-    name: 'Gaming Channel Thumbnail',
-    src: '/assets/Thumbnail/Gaming Channel.png',
+  {
+    title: 'VECTOR ILLUSTRATIONS',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    images: [
+      {
+        name: 'Alien Catooo',
+        src: '/assets/vector/Alien Catooo.png',
+      },
+      {
+        name: 'Angry butterfly Coloured Art',
+        src: '/assets/vector/Angry butterfly Coloured Art.png',
+      },
+      {
+        name: 'Shoe Dino',
+        src: '/assets/vector/Shoe Dino.png',
+      },
+
+    ],
   },
-   {
-    name: 'Horror Game Thumbnail',
-    src: '/assets/Thumbnail/Horror.png',
+  {
+    title: 'BANNER DESIGN',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/banner/banner.png'],
+    images: [
+      {
+        name: 'FORM 01',
+        src: '/assets/banner/form.png',
+      },
+      {
+        name: 'Fresh Drip',
+        src: '/assets/banner/fresh.png',
+      },
+      {
+        name: 'Game Banner',
+        src: '/assets/banner/Game.png',
+      },
+      {
+        name: 'Neon Social Club',
+        src: '/assets/banner/neon.png',
+      },
+      {
+        name: 'Tactical Warzone',
+        src: '/assets/banner/TACTICAL.png',
+      },
+      {
+        name: 'Velocity',
+        src: '/assets/banner/velocity.jpg',
+      },
+    ],
   },
-     {
-    name: 'Red and Blue Horror Story Thumbnail',
-    src: '/assets/Thumbnail/Red and Blue Horror Story YouTube Thumbnail.png',
+  {
+    title: 'YOUTUBE THUMBNAIL',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    images: [
+      {
+        name: 'Gaming Channel Thumbnail',
+        src: '/assets/Thumbnail/Gaming Channel.png',
+      },
+      {
+        name: 'Horror Game Thumbnail',
+        src: '/assets/Thumbnail/Horror.png',
+      },
+      {
+        name: 'Red and Blue Horror Story Thumbnail',
+        src: '/assets/Thumbnail/Red and Blue Horror Story YouTube Thumbnail.png',
+      },
+      {
+        name: 'Red and White Brush Horror Story Thumbnail',
+        src: '/assets/Thumbnail/Red and White Brush Horror Story Thumbnail.png',
+      },
+    ],
   },
-    {
-    name: 'Red and White Brush Horror Story Thumbnail',
-    src: '/assets/Thumbnail/Red and White Brush Horror Story Thumbnail.png',
+  {
+    title: 'SKETCH ARTWORK',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/sketch/Girl Sketched.png'],
+    images: [
+      //  {
+      //   name: 'Anime boy Sketch',
+      //   src: '/assets/sketch/Anime boy sketch.png',
+      // },
+      {
+        name: 'Anime Girl Sketch Art',
+        src: '/assets/sketch/Anime Girl Sketch Art.png',
+      },
+      {
+        name: 'Girl Cartoon Character',
+        src: '/assets/sketch/Girl Cartoon Character.png',
+      },
+      {
+        name: 'Sketch Art 2',
+        src: '/assets/sketch/Sketch Art 2.png',
+      },
+      //  {
+      //   name: "90's Anime Girl Art",
+      //   src: '/assets/sketch/90s Anime Girl Art..png',
+      // },
+      {
+        name: 'Girl Cartoon Character 2',
+        src: '/assets/sketch/Kongsuni.jpg',
+      },
+    ],
   },
-  ],
-},
-{
-  title: 'SKETCH ARTWORK',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image: ['/assets/sketch/Girl Sketched.png'],
-  images: [
-  //  {
-  //   name: 'Anime boy Sketch',
-  //   src: '/assets/sketch/Anime boy sketch.png',
-  // },
-   {
-    name: 'Anime Girl Sketch Art',
-    src: '/assets/sketch/Anime Girl Sketch Art.png',
+  {
+    title: 'SKETCH TO COLORS',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/sketch/Girl Sketched.png'],
+    images: [
+      //  {
+      //   name: 'Anime boy Sketch',
+      //   src: '/assets/sketch/Anime boy sketch.png',
+      // },
+      {
+        name: 'Cartoon Girl Color Art',
+        src: '/assets/sketch to colors/color.jpg',
+      },
+      {
+        name: 'Anime Lavender girl Art',
+        src: '/assets/sketch to colors/Anime Lavender girl Art.png',
+      },
+      {
+        name: 'Cute Girl color art',
+        src: '/assets/sketch to colors/Cute Girl color art.png',
+      },
+      //  {
+      //   name: "90's Anime Girl Art",
+      //   src: '/assets/sketch/90s Anime Girl Art..png',
+      // },
+      {
+        name: 'Ugly Cartoon girl color image',
+        src: '/assets/sketch to colors/Ugly Cartoon girl color image.png',
+      },
+    ],
   },
-     {
-    name: 'Girl Cartoon Character',
-    src: '/assets/sketch/Girl Cartoon Character.png',
-  },
-    {
-    name: 'Sketch Art 2',
-    src: '/assets/sketch/Sketch Art 2.png',
-  },
-  //  {
-  //   name: "90's Anime Girl Art",
-  //   src: '/assets/sketch/90s Anime Girl Art..png',
-  // },
-   {
-    name: 'Girl Cartoon Character 2',
-    src: '/assets/sketch/Kongsuni.jpg',
-  },
-  ],
-},
-{
-  title: 'SKETCH TO COLORS',
-  category: 'Graphic Designing',
-  filter: 'Graphic Designing',
-  image: ['/assets/sketch/Girl Sketched.png'],
-  images: [
-  //  {
-  //   name: 'Anime boy Sketch',
-  //   src: '/assets/sketch/Anime boy sketch.png',
-  // },
-   {
-    name: 'Cartoon Girl Color Art',
-    src: '/assets/sketch to colors/color.jpg',
-  },
-     {
-    name: 'Anime Lavender girl Art',
-    src: '/assets/sketch to colors/Anime Lavender girl Art.png',
-  },
-    {
-    name: 'Cute Girl color art',
-    src: '/assets/sketch to colors/Cute Girl color art.png',
-  },
-  //  {
-  //   name: "90's Anime Girl Art",
-  //   src: '/assets/sketch/90s Anime Girl Art..png',
-  // },
-   {
-    name: 'Ugly Cartoon girl color image',
-     src: '/assets/sketch to colors/Ugly Cartoon girl color image.png',
-  },
-  ],
-},
 
 
   // { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },
