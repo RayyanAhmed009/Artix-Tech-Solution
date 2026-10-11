@@ -1,170 +1,20 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { animate, stagger, utils } from "animejs";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, X, ExternalLink, Maximize2, ZoomIn } from "lucide-react";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import { portfolioFilters, portfolioItems } from "../data/site";
-
-const EASE_OUT = "cubicBezier(0.23, 1, 0.32, 1)";
-const EASE_MODAL = "cubicBezier(0.16, 1, 0.3, 1)";
-
-function toProps(from, to) {
-  const props = {};
-  Object.keys(from).forEach((k) => {
-    props[k] = [from[k], to[k]];
-  });
-  return props;
-}
-
-/**
- * Presence — Anime.js replacement for framer-motion's <AnimatePresence> + motion.*
- * Mounts the element, plays `from -> to`, and when `show` turns false plays
- * `exitTo` before unmounting.
- */
-function Presence({
-  show,
-  as: Tag = "div",
-  from,
-  to,
-  exitTo,
-  duration = 300,
-  ease = "outQuad",
-  children,
-  ...rest
-}) {
-  const [mounted, setMounted] = useState(show);
-  const ref = useRef(null);
-  const anim = useRef(null);
-  const first = useRef(true);
-
-  const playIn = () => {
-    const el = ref.current;
-    if (!el) return;
-    if (anim.current) anim.current.cancel();
-    utils.set(el, from);
-    anim.current = animate(el, { ...toProps(from, to), duration, ease });
-  };
-
-  const playOut = () => {
-    const el = ref.current;
-    if (!el) {
-      setMounted(false);
-      return;
-    }
-    if (anim.current) anim.current.cancel();
-    anim.current = animate(el, {
-      ...exitTo,
-      duration,
-      ease,
-      onComplete: () => setMounted(false),
-    });
-  };
-
-  useLayoutEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
-    if (show) {
-      if (!mounted) setMounted(true);
-      else playIn();
-    } else if (mounted) {
-      playOut();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [show]);
-
-  useLayoutEffect(() => {
-    if (mounted && show) playIn();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mounted]);
-
-  useEffect(
-    () => () => {
-      if (anim.current) anim.current.cancel();
-    },
-    []
-  );
-
-  if (!mounted) return null;
-  return (
-    <Tag ref={ref} {...rest}>
-      {children}
-    </Tag>
-  );
-}
 
 function Portfolio() {
   const [active, setActive] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
 
-  const gridRef = useRef(null);
-  const cardsAnim = useRef(null);
-
-  // keep the last value around so exit animations still have content to show
-  const projectRef = useRef(null);
-  if (selectedProject) projectRef.current = selectedProject;
-  const shownProject = projectRef.current;
-
-  const previewRef = useRef(null);
-  if (previewImage) previewRef.current = previewImage;
-  const shownPreview = previewRef.current;
-
-  const filterItems = (f) =>
-    f === "All" ? portfolioItems : portfolioItems.filter((p) => p.filter === f);
-
-  const visible = filterItems(active);
-
-  // Cards: staggered entrance on mount and after every filter change
-  useLayoutEffect(() => {
-    const cards = gridRef.current
-      ? gridRef.current.querySelectorAll("[data-card]")
-      : [];
-    if (!cards.length) return undefined;
-    if (cardsAnim.current) cardsAnim.current.cancel();
-    utils.set(cards, { opacity: 0, scale: 0.94, translateY: 20 });
-    cardsAnim.current = animate(cards, {
-      opacity: [0, 1],
-      scale: [0.94, 1],
-      translateY: [20, 0],
-      duration: 350,
-      delay: stagger(60),
-      ease: EASE_OUT,
-    });
-    return () => {
-      if (cardsAnim.current) cardsAnim.current.cancel();
-    };
-  }, [active]);
-
-  // Filter change: fade the current cards out, then swap the list
-  const handleFilter = (filter) => {
-    if (filter === active) return;
-
-    const next = filterItems(filter);
-    const same =
-      next.length === visible.length &&
-      next.every((p, i) => p.title === visible[i].title);
-    const cards = gridRef.current
-      ? gridRef.current.querySelectorAll("[data-card]")
-      : [];
-
-    if (same || !cards.length) {
-      setActive(filter);
-      return;
-    }
-
-    if (cardsAnim.current) cardsAnim.current.cancel();
-    cardsAnim.current = animate(cards, {
-      opacity: 0,
-      scale: 0.94,
-      translateY: 10,
-      duration: 200,
-      ease: EASE_OUT,
-      onComplete: () => setActive(filter),
-    });
-  };
+  const visible =
+    active === "All"
+      ? portfolioItems
+      : portfolioItems.filter((p) => p.filter === active);
 
   return (
     <section
@@ -204,7 +54,7 @@ function Portfolio() {
             type="button"
             role="tab"
             aria-selected={active === filter}
-            onClick={() => handleFilter(filter)}
+            onClick={() => setActive(filter)}
             className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium transition-all duration-200 ${active === filter
               ? "btn-gradient text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
               : "border border-white/[0.06] bg-white/[0.04] text-white/70 hover:bg-white/[0.08] hover:text-white"
@@ -216,68 +66,81 @@ function Portfolio() {
       </div>
 
       {/* Portfolio Cards */}
-      <div
-        ref={gridRef}
+      <motion.div
+        layout
         className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {visible.map((project) => (
-          <article key={project.title} data-card>
-            <TiltCard
-              intensity={7}
-              className="card-glow group h-full overflow-hidden rounded-xl"
+        <AnimatePresence mode="popLayout">
+          {visible.map((project, index) => (
+            <motion.article
+              key={project.title}
+              layout
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 10 }}
+              transition={{
+                duration: 0.35,
+                delay: index * 0.06,
+                ease: [0.23, 1, 0.32, 1],
+              }}
             >
-              <button
-                type="button"
-                onClick={() => setSelectedProject(project)}
-                className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
-                aria-label={`Open ${project.title} gallery`}
+              <TiltCard
+                intensity={7}
+                className="card-glow group h-full overflow-hidden rounded-xl"
               >
-                {/* Cover Image */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="aspect-[3/2] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(project)}
+                  className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
+                  aria-label={`Open ${project.title} gallery`}
+                >
+                  {/* Cover Image */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="aspect-[3/2] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
 
-                    <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                      Click to View
-                      <ExternalLink className="h-4 w-4" />
+                      <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                        Click to View
+                        <ExternalLink className="h-4 w-4" />
+                      </span>
+
+                    </div>
+
+                    {/* Image Count */}
+                    <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                      {(project.images || [project.image]).length} Projects
                     </span>
-
                   </div>
 
-                  {/* Image Count */}
-                  <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
-                    {(project.images || [project.image]).length} Projects
-                  </span>
-                </div>
+                  {/* Card Details */}
+                  <div className="flex items-center justify-between gap-3 px-5 py-5">
+                    <div>
+                      <h2 className="text-[15px] font-semibold text-white">
+                        {project.title}
+                      </h2>
 
-                {/* Card Details */}
-                <div className="flex items-center justify-between gap-3 px-5 py-5">
-                  <div>
-                    <h2 className="text-[15px] font-semibold text-white">
-                      {project.title}
-                    </h2>
+                      <p className="mt-1.5 text-[13px] text-white/55">
+                        {project.category}
+                      </p>
+                    </div>
 
-                    <p className="mt-1.5 text-[13px] text-white/55">
-                      {project.category}
-                    </p>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neon-pink/25 text-neon-pink transition-all duration-300 group-hover:border-neon-pink group-hover:bg-neon-pink/10">
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
+                    </span>
                   </div>
-
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neon-pink/25 text-neon-pink transition-all duration-300 group-hover:border-neon-pink group-hover:bg-neon-pink/10">
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
-                  </span>
-                </div>
-              </button>
-            </TiltCard>
-          </article>
-        ))}
-      </div>
+                </button>
+              </TiltCard>
+            </motion.article>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Empty State */}
       {visible.length === 0 && (
@@ -303,158 +166,157 @@ function Portfolio() {
       </div>
 
       {/* Gallery Modal */}
-      <Presence
-        show={!!selectedProject}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6"
-        from={{ opacity: 0 }}
-        to={{ opacity: 1 }}
-        exitTo={{ opacity: 0 }}
-        duration={300}
-        onClick={() => setSelectedProject(null)}
-      >
-        {shownProject && (
-          <Presence
-            show={!!selectedProject}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${shownProject.title} gallery`}
-            className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-[#100d1b] p-5 shadow-[0_0_60px_rgba(168,60,245,0.16)] sm:p-8"
-            from={{ opacity: 0, scale: 0.94, translateY: 25 }}
-            to={{ opacity: 1, scale: 1, translateY: 0 }}
-            exitTo={{ opacity: 0, scale: 0.94, translateY: 20 }}
-            duration={300}
-            ease={EASE_MODAL}
-            onClick={(event) => event.stopPropagation()}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
           >
-            {/* Modal Header */}
-            <div className="mb-6 flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold tracking-[0.15em] text-neon-pink">
-                  OUR PORTFOLIO
-                </p>
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${selectedProject.title} gallery`}
+              className="relative max-h-[90vh] w-full max-w-6xl overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-[#100d1b] p-5 shadow-[0_0_60px_rgba(168,60,245,0.16)] sm:p-8"
+              initial={{ opacity: 0, scale: 0.94, y: 25 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.15em] text-neon-pink">
+                    OUR PORTFOLIO
+                  </p>
 
-                <h2 className="mt-2 text-2xl font-bold text-gradient sm:text-2xl">
-                  {shownProject.title}
-                </h2>
+                  <h2 className="mt-2 text-2xl font-bold text-gradient sm:text-2xl">
+                    {selectedProject.title}
+                  </h2>
 
-                <p className="mt-2 text-sm text-white/50">
-                  {shownProject.category} ·{" "}
-                  {(shownProject.images || [shownProject.image]).length} projects
-                </p>
+                  <p className="mt-2 text-sm text-white/50">
+                    {selectedProject.category} ·{" "}
+                    {(selectedProject.images || [selectedProject.image]).length} projects
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-neon-pink/50 hover:bg-neon-pink/10 hover:text-neon-pink"
+                  aria-label="Close gallery"
+                >
+                  <X className="h-5 w-5" />
+                </button>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-neon-pink/50 hover:bg-neon-pink/10 hover:text-neon-pink"
-                aria-label="Close gallery"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
+              {/* Gallery Images */}
 
-            {/* Gallery Images */}
-
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {shownProject.images.map((image, index) => (
-                <div
-                  key={`${image.src}-${index}`}
-                  className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
-                >
-                  <button
-                    type="button"
-                    onClick={() => setPreviewImage(image.src)}
-                    className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
-                    aria-label={`Preview ${image.name || `Logo ${index + 1}`}`}
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {selectedProject.images.map((image, index) => (
+                  <div
+                    key={`${image.src}-${index}`}
+                    className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
                   >
-                    <img
-                      src={image.src}
-                      alt={image.name || `Logo Design ${index + 1}`}
-                      loading="lazy"
-                      decoding="async"
-                      className="max-h-56 w-auto rounded-xl object-contain"
-                    />
-
-                    {/* Overlay on every image */}
-                    <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
-                      <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                        Click to Zoom-in
-                        <ZoomIn className="h-4 w-4" />
-                      </span>
-                    </div>
-                  </button>
-
-                  <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
-                    <h3 className="min-w-0 text-sm font-semibold text-white">
-                      {image.name}
-                    </h3>
-
                     <button
                       type="button"
                       onClick={() => setPreviewImage(image.src)}
-                      className="shrink-0 rounded-lg border border-white/10 p-2 text-gray-300 transition hover:border-[#d96bff]/50 hover:text-[#d96bff]"
-                      aria-label="View full-size image"
+                      className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
+                      aria-label={`Preview ${image.name || `Logo ${index + 1}`}`}
                     >
-                      <Maximize2 size={16} />
+                      <img
+                        src={image.src}
+                        alt={image.name || `Logo Design ${index + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="max-h-56 w-auto rounded-xl object-contain"
+                      />
+
+                      {/* Overlay on every image */}
+                      <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
+                        <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                          Click to Zoom-in
+                          <ZoomIn className="h-4 w-4" />
+                        </span>
+                      </div>
                     </button>
+
+                    <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
+                      <h3 className="min-w-0 text-sm font-semibold text-white">
+                        {image.name}
+                      </h3>
+
+                      <button
+                        type="button"
+                        onClick={() => setPreviewImage(image.src)}
+                        className="shrink-0 rounded-lg border border-white/10 p-2 text-gray-300 transition hover:border-[#d96bff]/50 hover:text-[#d96bff]"
+                        aria-label="View full-size image"
+                      >
+                        <Maximize2 size={16} />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
 
-            {/* Full Image Preview */}
-            <Presence
-              show={!!previewImage}
-              className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-8"
-              from={{ opacity: 0 }}
-              to={{ opacity: 1 }}
-              exitTo={{ opacity: 0 }}
-              duration={250}
-              onClick={() => setPreviewImage(null)}
-            >
-              <button
-                type="button"
-                onClick={() => setPreviewImage(null)}
-                className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/60 p-3 text-white transition hover:border-[#d96bff] hover:text-[#d96bff]"
-                aria-label="Close image preview"
-              >
-                <X size={24} />
-              </button>
+              {/* Full Image Preview */}
+              <AnimatePresence>
+                {previewImage && (
+                  <motion.div
+                    className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setPreviewImage(null)}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setPreviewImage(null)}
+                      className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/60 p-3 text-white transition hover:border-[#d96bff] hover:text-[#d96bff]"
+                      aria-label="Close image preview"
+                    >
+                      <X size={24} />
+                    </button>
 
-              {shownPreview && (
-                <Presence
-                  as="img"
-                  key={shownPreview}
-                  show={!!previewImage}
-                  src={shownPreview}
-                  alt="Full-size logo preview"
-                  from={{ opacity: 0, scale: 0.92 }}
-                  to={{ opacity: 1, scale: 1 }}
-                  exitTo={{ opacity: 0, scale: 0.92 }}
-                  duration={250}
-                  onClick={(event) => event.stopPropagation()}
-                  className="max-h-[88vh] max-w-full rounded-xl object-contain shadow-[0_0_50px_rgba(168,60,245,0.2)]"
-                />
-              )}
-            </Presence>
+                    <motion.img
+                      key={previewImage}
+                      src={previewImage}
+                      alt="Full-size logo preview"
+                      initial={{ opacity: 0, scale: 0.92 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.92 }}
+                      transition={{ duration: 0.25 }}
+                      onClick={(event) => event.stopPropagation()}
+                      className="max-h-[88vh] max-w-full rounded-xl object-contain shadow-[0_0_50px_rgba(168,60,245,0.2)]"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
 
 
 
-            {/* Modal Footer */}
-            <div className="mt-7 flex justify-center border-t border-white/[0.08] pt-6">
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-medium text-white/75 transition hover:border-neon-pink/40 hover:text-white"
-              >
-                Close Gallery
-              </button>
-            </div>
-          </Presence>
+              {/* Modal Footer */}
+              <div className="mt-7 flex justify-center border-t border-white/[0.08] pt-6">
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-medium text-white/75 transition hover:border-neon-pink/40 hover:text-white"
+                >
+                  Close Gallery
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
-      </Presence>
+      </AnimatePresence>
     </section>
   );
 }
