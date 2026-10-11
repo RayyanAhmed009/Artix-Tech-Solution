@@ -187,6 +187,26 @@ export const portfolioItems = [
         name: '',
         src: '/assets/character/8.jpg',
       },
+      {
+        name: '',
+        src: '/assets/character/9.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/character/10.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/character/11.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/character/12.png',
+      },
+      {
+        name: '',
+        src: '/assets/character/13.png',
+      },
       // {
       //   name: '',
       //   src: '/assets/character/winged fairy.png',
@@ -230,6 +250,10 @@ export const portfolioItems = [
       {
         name: '',
         src: '/assets/full body/8.png',
+      },
+      {
+        name: '',
+        src: '/assets/full body/9.jpg',
       },
       // {
       //   name: '',
@@ -333,6 +357,10 @@ export const portfolioItems = [
       },
       {
         name: '',
+        src: '/assets/illustrations/14.jpg',
+      },
+      {
+        name: '',
         src: '/assets/illustrations/Night Painting.png',
       },
 
@@ -386,7 +414,7 @@ export const portfolioItems = [
     title: 'VECTOR ILLUSTRATIONS',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    image: [''],
     images: [
       {
         name: 'Alien Catooo',
@@ -436,25 +464,29 @@ export const portfolioItems = [
     ],
   },
   {
-    title: 'YOUTUBE THUMBNAIL',
+    title: 'THUMBNAIL',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/0a92ab12-2d43-4ca9-9d0c-8206bf48fb4b.jpg',
+    image: ['/assets/Thumbnail/1.jpg'],
     images: [
       {
-        name: 'Gaming Channel Thumbnail',
+        name: '',
         src: '/assets/Thumbnail/Gaming Channel.png',
       },
       {
-        name: 'Horror Game Thumbnail',
+        name: '',
         src: '/assets/Thumbnail/Horror.png',
       },
       {
-        name: 'Red and Blue Horror Story Thumbnail',
+        name: '',
+        src: '/assets/Thumbnail/mine.jpg',
+      },
+      {
+        name: '',
         src: '/assets/Thumbnail/Red and Blue Horror Story YouTube Thumbnail.png',
       },
       {
-        name: 'Red and White Brush Horror Story Thumbnail',
+        name: '',
         src: '/assets/Thumbnail/Red and White Brush Horror Story Thumbnail.png',
       },
     ],
@@ -495,7 +527,7 @@ export const portfolioItems = [
     title: 'SKETCH TO COLORS',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
-    image: ['/assets/sketch/Girl Sketched.png'],
+    image: [''],
     images: [
       //  {
       //   name: 'Anime boy Sketch',
