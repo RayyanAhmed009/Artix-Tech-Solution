@@ -47,6 +47,13 @@ body,
   background-clip: text;
   color: transparent;
 }
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-modify: read-only;
+}
 .text-gradient-blue {
   background: linear-gradient(90deg, #2ab8f5 0%, #8b5cf6 55%, #c13cf0 100%);
   -webkit-background-clip: text;
