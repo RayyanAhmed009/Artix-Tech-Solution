@@ -70,9 +70,9 @@ const reviews = [
     'I was impressed by their creativity and professionalism. They turned our ideas into a beautiful digital experience that truly represents our brand.',
 },
 {
-  name: 'Zain Shah',
+  name: 'Samantha Wells',
   role: 'E-commerce Manager',
-  initials: 'ZS',
+  initials: 'SW',
   rating: 4,
   review:
     'Great experience from start to finish. The team was responsive, understood our requirements, and delivered a clean and professional website.',

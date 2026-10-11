@@ -99,7 +99,11 @@ function Portfolio() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      loading="lazy"
+                      loading={index < 3 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      decoding="async"
+                      width="600"
+                      height="400"
                       className="aspect-[3/2] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
 
@@ -233,9 +237,11 @@ function Portfolio() {
                       <img
                         src={image.src}
                         alt={image.name || `Logo Design ${index + 1}`}
-                        loading="lazy"
+                        loading={index < 3 ? "eager" : "lazy"}
                         decoding="async"
-                        className="max-h-56 w-auto rounded-xl object-contain"
+                        width="400"
+                        height="224"
+                        className="h-56 w-full rounded-xl object-contain"
                       />
 
                       {/* Overlay on every image */}
