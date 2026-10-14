@@ -21,211 +21,209 @@
 -->
 <div class="vs-aurora" aria-hidden="true"><canvas class="vs-aurora-canvas"></canvas></div>
 <style>
-   
-.vs-aurora {
-  --vs-aurora-low: #6355f5;
-  --vs-aurora-high: #b42df2;
-  --vs-aurora-hem: #b42df2;
-  --vs-aurora-sky: #0a1424;
+  .vs-aurora {
+    --vs-aurora-low: #6355f5;
+    --vs-aurora-high: #b42df2;
+    --vs-aurora-hem: #b42df2;
+    --vs-aurora-sky: #0a1424;
 
-  --vs-aurora-intensity: 0.4;
-  --vs-aurora-speed: 1;
-  --vs-aurora-horizon: .3;
+    --vs-aurora-intensity: 0.4;
+    --vs-aurora-speed: 1;
+    --vs-aurora-horizon: .3;
 
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
 
-  background:
-    radial-gradient(
-      ellipse at 50% 65%,
-      #f02bea40 0%,
-      #b42df240 22%,
-      #6355f530 45%,
-      transparent 72%
-    ),
-    linear-gradient(
-      180deg,
-      #03060c 0%,
-      #0a1424 50%,
-      #17102d 75%,
-      #020406 100%
-    );
-}
+    background:
+      radial-gradient(ellipse at 50% 65%,
+        #f02bea40 0%,
+        #b42df240 22%,
+        #6355f530 45%,
+        transparent 72%),
+      linear-gradient(180deg,
+        #03060c 0%,
+        #0a1424 50%,
+        #17102d 75%,
+        #020406 100%);
+  }
 
-/* Aurora color palette */
-:root {
-  --aurora-pink: #f02bea;
-  --aurora-purple: #b42df2;
-  --aurora-indigo: #6355f5;
-  --aurora-blue: #21b9f5;
-}
+  /* Aurora color palette */
+  :root {
+    --aurora-pink: #f02bea;
+    --aurora-purple: #b42df2;
+    --aurora-indigo: #6355f5;
+    --aurora-blue: #21b9f5;
+  }
 
-.vs-aurora::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  .vs-aurora::before {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-  background: linear-gradient(
-    0deg,
-    transparent 0%,
-    #f02bea 30%,
-    #b42df2 45%,
-    #6355f5 65%,
-    #21b9f5 100%
-  );
+    background: linear-gradient(0deg,
+        transparent 0%,
+        #f02bea 30%,
+        #b42df2 45%,
+        #6355f5 65%,
+        #21b9f5 100%);
 
-  opacity: 0.18;
-  filter: blur(65px);
-  transform: scale(1.15);
-}
+    opacity: 0.18;
+    filter: blur(65px);
+    transform: scale(1.15);
+  }
 
 
-    .vs-aurora-canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        opacity: 0;
-        transition: opacity 1.4s cubic-bezier(.16, 1, .3, 1);
-    }
+  .vs-aurora-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+    transition: opacity 1.4s cubic-bezier(.16, 1, .3, 1);
+  }
 
-    .vs-aurora-ready .vs-aurora-canvas {
-        opacity: 1;
-    }
+  .vs-aurora-ready .vs-aurora-canvas {
+    opacity: 1;
+  }
 </style>
 <script>
-    (() => {
-        /* ---- shared runtime: WebGL2 context, resize, visibility, pointer spring, CSS-variable props ---- */
-        const VS = (root, spec) => {
-            const P = spec.prefix, canvas = root.querySelector('canvas');
-            const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-            const S = {
-                root, canvas, gl: null, w: 1, h: 1, cssW: 1, cssH: 1, dpr: 1, t: spec.t0 || 0, rt: 0, speed: 1, frame: 0, visible: false, lost: false, raf: 0, reduced: reduce.matches, css: {},
-                ptr: { x: .5, y: .5, tx: .5, ty: .5, vx: 0, vy: 0, px: .5, py: .5, down: false, inside: false, active: 0, seen: false }
-            };
-            const gl = canvas.getContext('webgl2', { antialias: false, alpha: false, depth: false, stencil: false, premultipliedAlpha: false, powerPreference: 'high-performance' });
-            if (!gl) { root.classList.add(P + '-fallback'); return null; }
-            S.gl = gl;
-            /* colours: any CSS colour string -> linear rgb */
-            const cc = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
-            const toLin = (v) => (v <= .04045 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4));
-            const color = (str) => { cc.clearRect(0, 0, 1, 1); cc.fillStyle = '#000'; cc.fillStyle = str; cc.fillRect(0, 0, 1, 1); const d = cc.getImageData(0, 0, 1, 1).data; return [toLin(d[0] / 255), toLin(d[1] / 255), toLin(d[2] / 255)]; };
-            const readVars = () => {
-                const cs = getComputedStyle(root);
-                for (const [k, def] of Object.entries(spec.vars || {})) {
-                    const raw = cs.getPropertyValue(`--${P}-${k}`).trim() || String(def);
-                    S.css[k] = typeof def === 'number' ? (parseFloat(raw) || 0) : color(raw);
-                }
-                S.speed = S.css.speed != null ? S.css.speed : 1;
-                spec.vars && spec.onVars && spec.onVars(S);
-            };
-            /* GL helpers */
-            const VERT = `#version 300 es
+  (() => {
+    /* ---- shared runtime: WebGL2 context, resize, visibility, pointer spring, CSS-variable props ---- */
+    const VS = (root, spec) => {
+      const P = spec.prefix, canvas = root.querySelector('canvas');
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+      const S = {
+        root, canvas, gl: null, w: 1, h: 1, cssW: 1, cssH: 1, dpr: 1, t: spec.t0 || 0, rt: 0, speed: 1, frame: 0, visible: false, lost: false, raf: 0, reduced: reduce.matches, css: {},
+        ptr: { x: .5, y: .5, tx: .5, ty: .5, vx: 0, vy: 0, px: .5, py: .5, down: false, inside: false, active: 0, seen: false }
+      };
+      const gl = canvas.getContext('webgl2', { antialias: false, alpha: false, depth: false, stencil: false, premultipliedAlpha: false, powerPreference: 'high-performance' });
+      if (!gl) { root.classList.add(P + '-fallback'); return null; }
+      S.gl = gl;
+      /* colours: any CSS colour string -> linear rgb */
+      const cc = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+      const toLin = (v) => (v <= .04045 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4));
+      const color = (str) => { cc.clearRect(0, 0, 1, 1); cc.fillStyle = '#000'; cc.fillStyle = str; cc.fillRect(0, 0, 1, 1); const d = cc.getImageData(0, 0, 1, 1).data; return [toLin(d[0] / 255), toLin(d[1] / 255), toLin(d[2] / 255)]; };
+      const readVars = () => {
+        const cs = getComputedStyle(root);
+        for (const [k, def] of Object.entries(spec.vars || {})) {
+          const raw = cs.getPropertyValue(`--${P}-${k}`).trim() || String(def);
+          S.css[k] = typeof def === 'number' ? (parseFloat(raw) || 0) : color(raw);
+        }
+        S.speed = S.css.speed != null ? S.css.speed : 1;
+        spec.vars && spec.onVars && spec.onVars(S);
+      };
+      /* GL helpers */
+      const VERT = `#version 300 es
 void main(){ vec2 p = vec2(float((gl_VertexID << 1) & 2), float(gl_VertexID & 2)); gl_Position = vec4(p * 2. - 1., 0., 1.); }`;
-            S.program = (frag, vert) => {
-                const mk = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS) && !gl.isContextLost()) console.warn(P, gl.getShaderInfoLog(s)); return s; };
-                const p = gl.createProgram(); gl.attachShader(p, mk(gl.VERTEX_SHADER, vert || VERT)); gl.attachShader(p, mk(gl.FRAGMENT_SHADER, '#version 300 es\nprecision highp float;\nprecision highp int;\n' + frag)); gl.linkProgram(p);
-                const u = {}; const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS) || 0;
-                for (let i = 0; i < n; i++) { const a = gl.getActiveUniform(p, i); u[a.name.replace(/\[0\]$/, '')] = gl.getUniformLocation(p, a.name); }
-                return { p, u };
-            };
-            S.target = (w, h, o = {}) => {
-                const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
-                const half = o.half !== false && S.hf;
-                gl.texImage2D(gl.TEXTURE_2D, 0, half ? gl.RGBA16F : gl.RGBA8, w, h, 0, gl.RGBA, half ? gl.HALF_FLOAT : gl.UNSIGNED_BYTE, null);
-                const f = o.nearest ? gl.NEAREST : gl.LINEAR;
-                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, o.mip ? gl.LINEAR_MIPMAP_LINEAR : f); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, f);
-                const wrap = o.repeat ? gl.REPEAT : gl.CLAMP_TO_EDGE; gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrap); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, wrap);
-                const fb = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fb); gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
-                gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT); gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-                return { t, fb, w, h, mip: !!o.mip };
-            };
-            S.pair = (w, h, o) => { const a = S.target(w, h, o), b = S.target(w, h, o); return { a, b, w, h, swap() { const x = this.a; this.a = this.b; this.b = x; } }; };
-            S.free = (...ts) => ts.forEach((x) => { if (!x) return; if (x.a) { S.free(x.a, x.b); return; } gl.deleteTexture(x.t); gl.deleteFramebuffer(x.fb); });
-            /* draw a program into a target (null = screen); tex = {name: target|texture} bound to units in order */
-            S.draw = (pr, out, uni = {}, tex = {}) => {
-                gl.useProgram(pr.p);
-                if (out) { gl.bindFramebuffer(gl.FRAMEBUFFER, out.fb); gl.viewport(0, 0, out.w, out.h); } else { gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, S.w, S.h); }
-                let unit = 0;
-                for (const [k, v] of Object.entries(tex)) { gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, v && v.t !== undefined ? v.t : v); if (pr.u[k]) gl.uniform1i(pr.u[k], unit); unit++; }
-                for (const [k, v] of Object.entries(uni)) {
-                    const l = pr.u[k]; if (!l) continue;
-                    if (typeof v === 'number') gl.uniform1f(l, v); else if (v.length === 2) gl.uniform2fv(l, v); else if (v.length === 3) gl.uniform3fv(l, v); else if (v.length === 4) gl.uniform4fv(l, v); else gl.uniform3fv(l, v);
-                }
-                gl.drawArrays(gl.TRIANGLES, 0, 3);
-                if (out && out.mip) { gl.bindTexture(gl.TEXTURE_2D, out.t); gl.generateMipmap(gl.TEXTURE_2D); }
-            };
-            const setup = () => {
-                S.hf = !!gl.getExtension('EXT_color_buffer_float') || !!gl.getExtension('EXT_color_buffer_half_float');
-                gl.getExtension('OES_texture_float_linear');
-                gl.disable(gl.DEPTH_TEST); gl.disable(gl.BLEND);
-                spec.init(S); S.sized = false; readVars(); resize();
-            };
-            const resize = () => {
-                const r = root.getBoundingClientRect(); const scale = (spec.scale ? spec.scale(S) : 1);
-                S.cssW = Math.max(1, r.width); S.cssH = Math.max(1, r.height);
-                S.dpr = Math.min(window.devicePixelRatio || 1, 2) * scale;
-                const w = Math.max(1, Math.round(S.cssW * S.dpr)), h = Math.max(1, Math.round(S.cssH * S.dpr));
-                if (w === S.w && h === S.h && S.sized) return;
-                S.w = canvas.width = w; S.h = canvas.height = h; S.aspect = w / h; S.sized = true;
-                spec.resize && spec.resize(S);
-                if (S.reduced) still();
-            };
-            /* pointer: a spring toward the finger/mouse, in root-normalised coords (0..1, y up) */
-            const P_ = S.ptr;
-            const at = (cx, cy) => { const r = root.getBoundingClientRect(); P_.tx = (cx - r.left) / Math.max(1, r.width); P_.ty = 1 - (cy - r.top) / Math.max(1, r.height); P_.inside = P_.tx >= 0 && P_.tx <= 1 && P_.ty >= 0 && P_.ty <= 1; if (!P_.seen) { P_.x = P_.px = P_.tx; P_.y = P_.py = P_.ty; P_.seen = true; } P_.active = 1; P_.last = performance.now(); };
-            addEventListener('pointermove', (e) => { if (e.pointerType !== 'touch') at(e.clientX, e.clientY); }, { passive: true });
-            addEventListener('pointerdown', (e) => { at(e.clientX, e.clientY); if (P_.inside) { P_.down = true; spec.press && spec.press(S, true); } }, { passive: true });
-            addEventListener('pointerup', () => { if (P_.down) { P_.down = false; spec.press && spec.press(S, false); } }, { passive: true });
-            addEventListener('pointercancel', () => { if (P_.down) { P_.down = false; spec.press && spec.press(S, false); } }, { passive: true });
-            addEventListener('touchstart', (e) => { const t = e.touches[0]; if (t) { P_.seen = false; at(t.clientX, t.clientY); } }, { passive: true });
-            addEventListener('touchmove', (e) => { const t = e.touches[0]; if (t) at(t.clientX, t.clientY); }, { passive: true });
-            const stepPtr = (dt) => {
-                P_.px = P_.x; P_.py = P_.y;
-                const k = spec.ptrSpring || [170, 26]; const n = Math.ceil(dt / (1 / 120));
-                for (let i = 0; i < n; i++) { const h = dt / n; P_.vx += ((P_.tx - P_.x) * k[0] - P_.vx * k[1]) * h; P_.vy += ((P_.ty - P_.y) * k[0] - P_.vy * k[1]) * h; P_.x += P_.vx * h; P_.y += P_.vy * h; }
-                P_.active = Math.max(0, P_.active - dt * .6);
-            };
-            /* loop: only while on screen, tab visible and context alive */
-            let last = 0;
-            const loop = (now) => {
-                S.raf = 0; if (!canRun()) return;
-                const dt = last ? Math.min(.05, (now - last) / 1000) : 1 / 60; last = now;
-                stepPtr(dt); S.t += dt * S.speed; S.rt += dt; S.frame++;
-                spec.frame(S, dt);
-                schedule();
-            };
-            const canRun = () => S.visible && !document.hidden && !S.lost && !S.reduced;
-            const schedule = () => { if (!S.raf && canRun()) { S.raf = requestAnimationFrame(loop); } else if (!canRun()) last = 0; };
-            const still = () => { if (S.lost) return; (spec.still || ((s) => spec.frame(s, 1 / 60)))(S); };
-            new ResizeObserver(resize).observe(root);
-            new IntersectionObserver((es) => { S.visible = es[es.length - 1].isIntersecting; schedule(); }, { rootMargin: '64px' }).observe(root);
-            document.addEventListener('visibilitychange', schedule);
-            reduce.addEventListener('change', () => { S.reduced = reduce.matches; S.reduced ? still() : schedule(); });
-            new MutationObserver(() => { readVars(); if (S.reduced) still(); }).observe(root, { attributes: true, attributeFilter: ['style', 'class'] });
-            root.addEventListener(P + ':refresh', () => { readVars(); if (S.reduced) still(); });
-            canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); S.lost = true; if (S.raf) cancelAnimationFrame(S.raf); S.raf = 0; });
-            canvas.addEventListener('webglcontextrestored', () => { S.lost = false; setup(); schedule(); });
-            S.api = { press: (on) => spec.press && spec.press(S, on) };
-            setup();
-            if (S.reduced) still();
-            root.classList.add(P + '-ready');
-            return S;
-        };
+      S.program = (frag, vert) => {
+        const mk = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS) && !gl.isContextLost()) console.warn(P, gl.getShaderInfoLog(s)); return s; };
+        const p = gl.createProgram(); gl.attachShader(p, mk(gl.VERTEX_SHADER, vert || VERT)); gl.attachShader(p, mk(gl.FRAGMENT_SHADER, '#version 300 es\nprecision highp float;\nprecision highp int;\n' + frag)); gl.linkProgram(p);
+        const u = {}; const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS) || 0;
+        for (let i = 0; i < n; i++) { const a = gl.getActiveUniform(p, i); u[a.name.replace(/\[0\]$/, '')] = gl.getUniformLocation(p, a.name); }
+        return { p, u };
+      };
+      S.target = (w, h, o = {}) => {
+        const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
+        const half = o.half !== false && S.hf;
+        gl.texImage2D(gl.TEXTURE_2D, 0, half ? gl.RGBA16F : gl.RGBA8, w, h, 0, gl.RGBA, half ? gl.HALF_FLOAT : gl.UNSIGNED_BYTE, null);
+        const f = o.nearest ? gl.NEAREST : gl.LINEAR;
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, o.mip ? gl.LINEAR_MIPMAP_LINEAR : f); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, f);
+        const wrap = o.repeat ? gl.REPEAT : gl.CLAMP_TO_EDGE; gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrap); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, wrap);
+        const fb = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fb); gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
+        gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT); gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        return { t, fb, w, h, mip: !!o.mip };
+      };
+      S.pair = (w, h, o) => { const a = S.target(w, h, o), b = S.target(w, h, o); return { a, b, w, h, swap() { const x = this.a; this.a = this.b; this.b = x; } }; };
+      S.free = (...ts) => ts.forEach((x) => { if (!x) return; if (x.a) { S.free(x.a, x.b); return; } gl.deleteTexture(x.t); gl.deleteFramebuffer(x.fb); });
+      /* draw a program into a target (null = screen); tex = {name: target|texture} bound to units in order */
+      S.draw = (pr, out, uni = {}, tex = {}) => {
+        gl.useProgram(pr.p);
+        if (out) { gl.bindFramebuffer(gl.FRAMEBUFFER, out.fb); gl.viewport(0, 0, out.w, out.h); } else { gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, S.w, S.h); }
+        let unit = 0;
+        for (const [k, v] of Object.entries(tex)) { gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, v && v.t !== undefined ? v.t : v); if (pr.u[k]) gl.uniform1i(pr.u[k], unit); unit++; }
+        for (const [k, v] of Object.entries(uni)) {
+          const l = pr.u[k]; if (!l) continue;
+          if (typeof v === 'number') gl.uniform1f(l, v); else if (v.length === 2) gl.uniform2fv(l, v); else if (v.length === 3) gl.uniform3fv(l, v); else if (v.length === 4) gl.uniform4fv(l, v); else gl.uniform3fv(l, v);
+        }
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        if (out && out.mip) { gl.bindTexture(gl.TEXTURE_2D, out.t); gl.generateMipmap(gl.TEXTURE_2D); }
+      };
+      const setup = () => {
+        S.hf = !!gl.getExtension('EXT_color_buffer_float') || !!gl.getExtension('EXT_color_buffer_half_float');
+        gl.getExtension('OES_texture_float_linear');
+        gl.disable(gl.DEPTH_TEST); gl.disable(gl.BLEND);
+        spec.init(S); S.sized = false; readVars(); resize();
+      };
+      const resize = () => {
+        const r = root.getBoundingClientRect(); const scale = (spec.scale ? spec.scale(S) : 1);
+        S.cssW = Math.max(1, r.width); S.cssH = Math.max(1, r.height);
+        const isMobile = window.innerWidth <= 768;
 
-        const NOISE = `
+        S.dpr = Math.min(
+          window.devicePixelRatio || 1,
+          isMobile ? 1 : 1.25
+        ) * (isMobile ? 0.65 : 0.8);
+        const w = Math.max(1, Math.round(S.cssW * S.dpr)), h = Math.max(1, Math.round(S.cssH * S.dpr));
+        if (w === S.w && h === S.h && S.sized) return;
+        S.w = canvas.width = w; S.h = canvas.height = h; S.aspect = w / h; S.sized = true;
+        spec.resize && spec.resize(S);
+        if (S.reduced) still();
+      };
+      /* pointer: a spring toward the finger/mouse, in root-normalised coords (0..1, y up) */
+      const P_ = S.ptr;
+      const at = (cx, cy) => { const r = root.getBoundingClientRect(); P_.tx = (cx - r.left) / Math.max(1, r.width); P_.ty = 1 - (cy - r.top) / Math.max(1, r.height); P_.inside = P_.tx >= 0 && P_.tx <= 1 && P_.ty >= 0 && P_.ty <= 1; if (!P_.seen) { P_.x = P_.px = P_.tx; P_.y = P_.py = P_.ty; P_.seen = true; } P_.active = 1; P_.last = performance.now(); };
+      addEventListener('pointermove', (e) => { if (e.pointerType !== 'touch') at(e.clientX, e.clientY); }, { passive: true });
+      addEventListener('pointerdown', (e) => { at(e.clientX, e.clientY); if (P_.inside) { P_.down = true; spec.press && spec.press(S, true); } }, { passive: true });
+      addEventListener('pointerup', () => { if (P_.down) { P_.down = false; spec.press && spec.press(S, false); } }, { passive: true });
+      addEventListener('pointercancel', () => { if (P_.down) { P_.down = false; spec.press && spec.press(S, false); } }, { passive: true });
+      addEventListener('touchstart', (e) => { const t = e.touches[0]; if (t) { P_.seen = false; at(t.clientX, t.clientY); } }, { passive: true });
+      addEventListener('touchmove', (e) => { const t = e.touches[0]; if (t) at(t.clientX, t.clientY); }, { passive: true });
+      const stepPtr = (dt) => {
+        P_.px = P_.x; P_.py = P_.y;
+        const k = spec.ptrSpring || [170, 26]; const n = Math.ceil(dt / (1 / 120));
+        for (let i = 0; i < n; i++) { const h = dt / n; P_.vx += ((P_.tx - P_.x) * k[0] - P_.vx * k[1]) * h; P_.vy += ((P_.ty - P_.y) * k[0] - P_.vy * k[1]) * h; P_.x += P_.vx * h; P_.y += P_.vy * h; }
+        P_.active = Math.max(0, P_.active - dt * .6);
+      };
+      /* loop: only while on screen, tab visible and context alive */
+      let last = 0;
+      const loop = (now) => {
+        S.raf = 0; if (!canRun()) return;
+        const dt = last ? Math.min(.05, (now - last) / 1000) : 1 / 60; last = now;
+        stepPtr(dt); S.t += dt * S.speed; S.rt += dt; S.frame++;
+        spec.frame(S, dt);
+        schedule();
+      };
+      const canRun = () => S.visible && !document.hidden && !S.lost && !S.reduced;
+      const schedule = () => { if (!S.raf && canRun()) { S.raf = requestAnimationFrame(loop); } else if (!canRun()) last = 0; };
+      const still = () => { if (S.lost) return; (spec.still || ((s) => spec.frame(s, 1 / 60)))(S); };
+      new ResizeObserver(resize).observe(root);
+      new IntersectionObserver((es) => { S.visible = es[es.length - 1].isIntersecting; schedule(); }, { rootMargin: '64px' }).observe(root);
+      document.addEventListener('visibilitychange', schedule);
+      reduce.addEventListener('change', () => { S.reduced = reduce.matches; S.reduced ? still() : schedule(); });
+      new MutationObserver(() => { readVars(); if (S.reduced) still(); }).observe(root, { attributes: true, attributeFilter: ['style', 'class'] });
+      root.addEventListener(P + ':refresh', () => { readVars(); if (S.reduced) still(); });
+      canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); S.lost = true; if (S.raf) cancelAnimationFrame(S.raf); S.raf = 0; });
+      canvas.addEventListener('webglcontextrestored', () => { S.lost = false; setup(); schedule(); });
+      S.api = { press: (on) => spec.press && spec.press(S, on) };
+      setup();
+      if (S.reduced) still();
+      root.classList.add(P + '-ready');
+      return S;
+    };
+
+    const NOISE = `
 float h12(vec2 p){ vec3 a = fract(p.xyx * .1031); a += dot(a, a.yzx + 33.33); return fract((a.x + a.y) * a.z); }
 vec2 h22(vec2 p){ vec3 a = fract(p.xyx * vec3(.1031, .103, .0973)); a += dot(a, a.yzx + 33.33); return fract((a.xx + a.yz) * a.zy); }
 float vn(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f); return mix(mix(h12(i), h12(i + vec2(1, 0)), f.x), mix(h12(i + vec2(0, 1)), h12(i + 1.), f.x), f.y); }
 float fbm(vec2 p){ float s = 0., a = .5; for (int i = 0; i < 5; i++){ s += a * vn(p); p = p * 2.03 + 17.1; a *= .5; } return s; }`;
-        /* the curtains' shape, baked along x each frame: 3 sheets x 2 rows (4096 x 6)
-           row A: fold offset in z, 1/sqrt(1+slope^2), altitude of the hem, brightness patch
-           row B: ray brightness, ray length, hem-fringe strength */
-        const XR = 16.;
-        const CURT = `${NOISE}
+    /* the curtains' shape, baked along x each frame: 3 sheets x 2 rows (4096 x 6)
+       row A: fold offset in z, 1/sqrt(1+slope^2), altitude of the hem, brightness patch
+       row B: ray brightness, ray length, hem-fringe strength */
+    const XR = 16.;
+    const CURT = `${NOISE}
 uniform float uTime; out vec4 o;
 float fold(float x, float s, float t){
   float A1 = s < .5 ? .5 : (s < 1.5 ? .85 : 1.7), f1 = s < .5 ? .95 : (s < 1.5 ? .55 : .24);
@@ -254,8 +252,8 @@ void main(){
     o = vec4(rays, len, hem, 1.);
   }
 }`;
-        /* the aurora: march through the sky, in plan distance, over the three sheets */
-        const AUR = `
+    /* the aurora: march through the sky, in plan distance, over the three sheets */
+    const AUR = `
 uniform sampler2D uC; uniform vec2 uRes; uniform float uPan, uTilt, uHz, uFrame, uAsp; uniform vec3 uLow, uHigh, uHem; out vec4 o;
 const float ZB[3] = float[3](-2.4, -4.3, -9.);
 const float AM[3] = float[3](1.25, 2.35, 4.3);   // how far each sheet's folds can wander in z
@@ -299,8 +297,8 @@ void main(){
   }
   o = vec4(acc, .3);
 }`;
-        /* the night: sky, stars, the aurora, the hills and trees it lights, the lake that mirrors it all; graded */
-        const VIEW = `${NOISE}
+    /* the night: sky, stars, the aurora, the hills and trees it lights, the lake that mirrors it all; graded */
+    const VIEW = `${NOISE}
 uniform sampler2D uAur; uniform vec2 uRes; uniform float uTime, uHz, uK, uPan, uFrame; uniform vec3 uSky, uLow; out vec4 o;
 vec3 toSRGB(vec3 c){ c = max(c, 0.); return mix(c * 12.92, 1.055 * pow(c, vec3(1. / 2.4)) - .055, step(.0031308, c)); }
 vec3 aces(vec3 x){ return clamp((x * (2.51 * x + .03)) / (x * (2.43 * x + .59) + .14), 0., 1.); }
@@ -384,31 +382,46 @@ void main(){
   col += (h12(gl_FragCoord.xy + floor(uFrame) * vec2(17.3, 41.9)) + h12(gl_FragCoord.yx + floor(uFrame) * 7.7) - 1.) * .016;
   o = vec4(clamp(col, 0., 1.), 1.);
 }`;
-        document.querySelectorAll('.vs-aurora:not(.vs-aurora-ready)').forEach((root) => {
-            let pc, pa, pv, aur, curt, fresh = 0;
-            const render = (S, passes) => {
-                const gl = S.gl, P = S.ptr, pan = (P.x - .5) * .5 + S.t * .006, tilt = (P.y - .5) * .03, hz = Math.max(0, Math.min(.8, S.css.horizon));
-                S.draw(pc, curt, { uTime: S.t });
-                // each new march is blended over the last (constant alpha): the jitter averages out into a smooth glow
-                gl.enable(gl.BLEND); gl.blendFunc(gl.CONSTANT_ALPHA, gl.ONE_MINUS_CONSTANT_ALPHA);
-                for (let i = 0; i < passes; i++) {
-                    gl.blendColor(0, 0, 0, passes > 1 ? 1 / (i + 1) : (fresh < 2 ? 1 : .25));
-                    S.draw(pa, aur, { uRes: [aur.w, aur.h], uPan: pan, uTilt: tilt, uHz: hz, uFrame: (S.frame + i * 7) % 64, uAsp: S.cssW / S.cssH, uLow: S.css.low, uHigh: S.css.high, uHem: S.css.hem }, { uC: curt });
-                }
-                gl.disable(gl.BLEND); fresh++;
-                S.draw(pv, null, { uRes: [S.w, S.h], uTime: S.t, uHz: hz, uK: S.css.intensity, uPan: pan, uFrame: Math.floor(S.rt * 24), uSky: S.css.sky, uLow: S.css.low }, { uAur: aur });
-            };
-            VS(root, {
-                prefix: 'vs-aurora', t0: 40,
-                vars: { low: '#38f2a4', high: '#2ab4d9', hem: '#ff5c9d', sky: '#0a1424', intensity: 1, speed: 1, horizon: .3 },
-                ptrSpring: [40, 14],
-                /* the aurora is soft: march it at ~half the CSS resolution whatever the DPR */
-                init(S) { pc = S.program(CURT); pa = S.program(AUR); pv = S.program(VIEW); aur = null; curt = S.target(4096, 6); fresh = 0; },
-                resize(S) { S.free(aur); aur = S.target(Math.max(2, Math.round(S.cssW * .5)), Math.max(2, Math.round(S.cssH * .5)), { mip: true }); fresh = 0; },
-                frame(S) { render(S, 1); },
-                /* reduced motion: one still, the jittered march averaged over 16 passes so it is smooth */
-                still(S) { render(S, 16); },
-            });
-        });
-    })();
+    document.querySelectorAll('.vs-aurora:not(.vs-aurora-ready)').forEach((root) => {
+      let pc, pa, pv, aur, curt, fresh = 0;
+      const render = (S, passes) => {
+        const gl = S.gl, P = S.ptr, pan = (P.x - .5) * .5 + S.t * .006, tilt = (P.y - .5) * .03, hz = Math.max(0, Math.min(.8, S.css.horizon));
+        S.draw(pc, curt, { uTime: S.t });
+        // each new march is blended over the last (constant alpha): the jitter averages out into a smooth glow
+        gl.enable(gl.BLEND); gl.blendFunc(gl.CONSTANT_ALPHA, gl.ONE_MINUS_CONSTANT_ALPHA);
+        for (let i = 0; i < passes; i++) {
+          gl.blendColor(0, 0, 0, passes > 1 ? 1 / (i + 1) : (fresh < 2 ? 1 : .25));
+          S.draw(pa, aur, { uRes: [aur.w, aur.h], uPan: pan, uTilt: tilt, uHz: hz, uFrame: (S.frame + i * 7) % 64, uAsp: S.cssW / S.cssH, uLow: S.css.low, uHigh: S.css.high, uHem: S.css.hem }, { uC: curt });
+        }
+        gl.disable(gl.BLEND); fresh++;
+        S.draw(pv, null, { uRes: [S.w, S.h], uTime: S.t, uHz: hz, uK: S.css.intensity, uPan: pan, uFrame: Math.floor(S.rt * 24), uSky: S.css.sky, uLow: S.css.low }, { uAur: aur });
+      };
+      VS(root, {
+        prefix: 'vs-aurora', t0: 40,
+        vars: { low: '#38f2a4', high: '#2ab4d9', hem: '#ff5c9d', sky: '#0a1424', intensity: 1, speed: 1, horizon: .3 },
+        ptrSpring: [40, 14],
+        /* the aurora is soft: march it at ~half the CSS resolution whatever the DPR */
+        init(S) { pc = S.program(CURT); pa = S.program(AUR); pv = S.program(VIEW); aur = null; curt = S.target(4096, 6); fresh = 0; },
+        
+resize(S) {
+  S.free(aur);
+
+  const isMobile = window.innerWidth <= 768;
+  const quality = isMobile ? 0.3 : 0.45;
+
+  aur = S.target(
+    Math.max(2, Math.round(S.cssW * quality)),
+    Math.max(2, Math.round(S.cssH * quality)),
+    { mip: true }
+  );
+
+  fresh = 0;
+},
+
+        frame(S) { render(S, 1); },
+        /* reduced motion: one still, the jittered march averaged over 16 passes so it is smooth */
+        still(S) { render(S, 16); },
+      });
+    });
+  })();
 </script>
