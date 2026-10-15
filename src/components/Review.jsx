@@ -54,17 +54,17 @@ const reviews = [
     'From the initial concept to the final delivery, everything was handled professionally. Our new website looks fantastic and performs smoothly.',
 },
 {
-  name: 'Hamza Ahmed',
+  name: 'Robert Miller',
   role: 'Business Owner',
-  initials: 'HA',
+  initials: 'RM',
   rating: 5,
   review:
     'Artix Tech Solutions delivered an outstanding website for our business. The design is modern, fast, and exactly what we were looking for.',
 },
 {
-  name: 'Maham Tariq',
+  name: 'Jason Cox',
   role: 'Startup Founder',
-  initials: 'MT',
+  initials: 'JC',
   rating: 5,
   review:
     'I was impressed by their creativity and professionalism. They turned our ideas into a beautiful digital experience that truly represents our brand.',
