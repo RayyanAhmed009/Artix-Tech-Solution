@@ -33,7 +33,7 @@ export const navLinks = [
 
 export const images = {
   // hero: '/assets/back.png',
-  office: 'https://cdn.magicpatterns.com/patterns/generated-images/be2b4ad4-17c8-4ce6-9bb5-8cd7958c8527.jpg',
+  office: '/assets/about.jpg',
   mission: 'https://cdn.magicpatterns.com/patterns/generated-images/be892416-25bb-4614-bfbd-710bac890525.jpg',
 };
 
@@ -162,11 +162,15 @@ export const portfolioFilters = ['All', 'Graphic Designing'];
 
 export const portfolioItems = [
   {
-    title: 'HALF BODY CHARACTER',
+    title: 'CHARACTER ART',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
     image: ['/assets/character/work.png'],
     images: [
+      {
+        name: '',
+        src: '/assets/full body/winged fairy.png',
+      },
       {
         name: '',
         src: '/assets/character/1.png',
@@ -199,26 +203,6 @@ export const portfolioItems = [
         name: '',
         src: '/assets/character/11.jpg',
       },
-      {
-        name: '',
-        src: '/assets/character/12.png',
-      },
-      {
-        name: '',
-        src: '/assets/character/13.png',
-      },
-      // {
-      //   name: '',
-      //   src: '/assets/character/winged fairy.png',
-      // },
-    ],
-  },
-  {
-    title: 'FULL BODY CHARACTER',
-    category: 'Graphic Designing',
-    filter: 'Graphic Designing',
-    image: ['/assets/full body/winged fairy.png'],
-    images: [
       {
         name: '',
         src: '/assets/full body/1.jpg',
@@ -255,10 +239,71 @@ export const portfolioItems = [
         name: '',
         src: '/assets/full body/9.jpg',
       },
-      // {
-      //   name: '',
-      //   src: '/assets/character/winged fairy.png',
-      // },
+     
+    ],
+  },
+  {
+    title: 'CHARACTER ILLUSTRATION',
+    category: 'Graphic Designing',
+    filter: 'Graphic Designing',
+    image: ['/assets/illustrations/7.jpg'],
+    images: [
+      {
+        name: '',
+        src: '/assets/illustrations/1.png',
+      },
+      {
+        name: '',
+        src: '/assets/character/12.png',
+      },
+      {
+        name: '',
+        src: '/assets/character/13.png',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/2.png',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/3.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/4.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/5.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/6.jpg',
+      },
+      {
+        name: '',
+        src: '',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/8.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/10.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/11.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/13.jpg',
+      },
+      {
+        name: '',
+        src: '/assets/illustrations/14.jpg',
+      },
     ],
   },
   {
@@ -303,61 +348,19 @@ export const portfolioItems = [
     filter: 'Graphic Designing',
     image: ['/assets/illustrations/Ocean Sceneray.png'],
     images: [
-      {
-        name: '',
-        src: '/assets/illustrations/1.png',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/2.png',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/3.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/4.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/5.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/6.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/7.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/8.jpg',
-      },
+      
       {
         name: '',
         src: '/assets/illustrations/9.jpg',
       },
-      {
-        name: '',
-        src: '/assets/illustrations/10.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/11.jpg',
-      },
+      
       {
         name: '',
         src: '/assets/illustrations/12.jpg',
       },
       {
         name: '',
-        src: '/assets/illustrations/13.jpg',
-      },
-      {
-        name: '',
-        src: '/assets/illustrations/14.jpg',
+        src: '/assets/illustrations/Girl vector Illustration.png',
       },
       {
         name: '',
@@ -414,7 +417,7 @@ export const portfolioItems = [
     title: 'VECTOR ILLUSTRATIONS',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
-    image: [''],
+    image: ['/assets/vector/Angry butterfly Coloured Art.png'],
     images: [
       {
         name: 'Alien Catooo',
@@ -497,30 +500,61 @@ export const portfolioItems = [
     filter: 'Graphic Designing',
     image: ['/assets/sketch/Girl Sketched.png'],
     images: [
-      //  {
-      //   name: 'Anime boy Sketch',
-      //   src: '/assets/sketch/Anime boy sketch.png',
-      // },
+      {
+        name: "90's Anime Girl Art",
+        src: '/assets/sketch/90s Anime Girl Art..png',
+      },
+       {
+        name: 'Anime boy Sketch',
+        src: '/assets/sketch/Anime boy sketch.png',
+      },
       {
         name: 'Anime Girl Sketch Art',
         src: '/assets/sketch/Anime Girl Sketch Art.png',
+      },
+      {
+        name: 'Back Pose Sketched Art',
+        src: '/assets/sketch/Back pose Sketched.png',
+      },
+      {
+        name: 'Character Eyes Sketched Art',
+        src: '/assets/sketch/Character Eyes Sketched.png',
+      },
+      {
+        name: 'Full Body Sketched Art',
+        src: '/assets/sketch/Full Body Sketched.png',
       },
       {
         name: 'Girl Cartoon Character',
         src: '/assets/sketch/Girl Cartoon Character.png',
       },
       {
-        name: 'Sketch Art 2',
-        src: '/assets/sketch/Sketch Art 2.png',
-      },
-      //  {
-      //   name: "90's Anime Girl Art",
-      //   src: '/assets/sketch/90s Anime Girl Art..png',
-      // },
-      {
         name: 'Girl Cartoon Character 2',
         src: '/assets/sketch/Kongsuni.jpg',
       },
+      {
+        name: 'Side Smile Sketched Art',
+        src: '/assets/sketch/Sid smile Sketched.png',
+      },
+      {
+        name: 'Sidepose Sketched Art',
+        src: '/assets/sketch/Sidepose Sketched.png',
+      },
+      
+      {
+        name: 'Sketch Art 2',
+        src: '/assets/sketch/Sketch Art 2.png',
+      },
+      {
+        name: '',
+        src: '/assets/sketch/1.webp',
+      },
+       {
+        name: '',
+        src: '/assets/sketch/2.webp',
+      },
+       
+      
     ],
   },
   {

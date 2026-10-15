@@ -99,12 +99,12 @@ function Portfolio() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      loading={index < 3 ? "eager" : "lazy"}
-                      fetchPriority={index === 0 ? "high" : "auto"}
-                      decoding="async"
-                      width="600"
-                      height="400"
-                      className="aspect-[3/2] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="sync"
+                      width={600}
+                      height={400}
+                      className="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                     />
 
                     {/* Hover Overlay */}
@@ -223,52 +223,80 @@ function Portfolio() {
               {/* Gallery Images */}
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {selectedProject.images.map((image, index) => (
-                  <div
-                    key={`${image.src}-${index}`}
-                    className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setPreviewImage(image.src)}
-                      className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
-                      aria-label={`Preview ${image.name || `Logo ${index + 1}`}`}
-                    >
-                      <img
-                        src={image.src}
-                        alt={image.name || `Logo Design ${index + 1}`}
-                        loading={index < 3 ? "eager" : "lazy"}
-                        decoding="async"
-                        width="400"
-                        height="224"
-                        className="h-56 w-full rounded-xl object-contain"
-                      />
+                
+{selectedProject.images.map((image, index) => {
+  const isLocked = image.private && !privateUnlocked;
 
-                      {/* Overlay on every image */}
-                      <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
-                        <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                          Click to Zoom-in
-                          <ZoomIn className="h-4 w-4" />
-                        </span>
-                      </div>
-                    </button>
+  return (
+    <div
+      key={`${image.src}-${index}`}
+      className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
+    >
+      <button
+        type="button"
+        onClick={() => {
+          if (isLocked) {
+            setPendingProject({
+              ...selectedProject,
+              selectedImage: image,
+            });
+            setPassword("");
+            setPasswordError("");
+            setPasswordModal(true);
+            return;
+          }
 
-                    <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
-                      <h3 className="min-w-0 text-sm font-semibold text-white">
-                        {image.name}
-                      </h3>
+          setPreviewImage(image.src);
+        }}
+        className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
+        aria-label={
+          isLocked
+            ? `Unlock ${image.name}`
+            : `Preview ${image.name || `Logo ${index + 1}`}`
+        }
+      >
+        {isLocked ? (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-xl bg-[#090611] text-white">
+            <LockKeyhole className="h-8 w-8 text-[#d96bff]" />
+            <span className="text-sm font-medium">
+              Private Image
+            </span>
+            <span className="text-xs text-white/60">
+              Password required
+            </span>
+          </div>
+        ) : (
+          <>
+            <img
+              src={image.src}
+              alt={image.name || `Logo Design ${index + 1}`}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={400}
+              height={224}
+              className="h-56 w-full rounded-xl object-contain"
+            />
 
-                      {/* <button
-                        type="button"
-                        onClick={() => setPreviewImage(image.src)}
-                        className="shrink-0 rounded-lg border border-white/10 p-2 text-gray-300 transition hover:border-[#d96bff]/50 hover:text-[#d96bff]"
-                        aria-label="View full-size image"
-                      >
-                        <Maximize2 size={16} />
-                      </button> */}
-                    </div>
-                  </div>
-                ))}
+            <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
+              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                Click to Zoom-in
+                <ZoomIn className="h-4 w-4" />
+              </span>
+            </div>
+          </>
+        )}
+      </button>
+
+      <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
+        <h3 className="min-w-0 text-sm font-semibold text-white">
+          {image.name}
+        </h3>
+      </div>
+    </div>
+  );
+})}
+
               </div>
 
 
