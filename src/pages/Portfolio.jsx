@@ -43,11 +43,12 @@ function Portfolio() {
       </Reveal>
 
       {/* Category Filters */}
-      <div
-        className="mt-9 flex flex-wrap gap-3 lg:pl-11"
-        role="tablist"
-        aria-label="Filter projects"
-      >
+      <div className="mt-9 w-full min-w-0 lg:pl-11">
+  <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain scrollbar-hide sm:overflow-x-visible">
+    <div
+      className="flex w-max min-w-full flex-nowrap items-center gap-3 px-1 pb-2 sm:w-full sm:flex-wrap sm:justify-center sm:px-0"
+      role="tablist"
+    >
         {portfolioFilters.map((filter) => (
           <button
             key={filter}
@@ -55,16 +56,22 @@ function Portfolio() {
             role="tab"
             aria-selected={active === filter}
             onClick={() => setActive(filter)}
-            className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium transition-all duration-200 ${active === filter
-              ? "btn-gradient text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
-              : "border border-white/[0.06] bg-white/[0.04] text-white/70 hover:bg-white/[0.08] hover:text-white"
+            className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium
+    transition-all duration-200
+    !outline-none !ring-0 !ring-offset-0
+    focus:!outline-none focus:!ring-0 focus-visible:!outline-none
+    active:!border-[#d96bff]
+    ${active === filter
+                ? "btn-gradient !border-transparent text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
+                : "!border !border-[#d96bff50] !bg-white/[0.04] text-white/70 hover:!border-[#d96bff] hover:text-white"
               }`}
           >
             {filter}
           </button>
         ))}
-      </div>
-
+       </div>
+  </div>
+</div>
       {/* Portfolio Cards */}
       <motion.div
         layout
@@ -223,79 +230,79 @@ function Portfolio() {
               {/* Gallery Images */}
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                
-{selectedProject.images.map((image, index) => {
-  const isLocked = image.private && !privateUnlocked;
 
-  return (
-    <div
-      key={`${image.src}-${index}`}
-      className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
-    >
-      <button
-        type="button"
-        onClick={() => {
-          if (isLocked) {
-            setPendingProject({
-              ...selectedProject,
-              selectedImage: image,
-            });
-            setPassword("");
-            setPasswordError("");
-            setPasswordModal(true);
-            return;
-          }
+                {selectedProject.images.map((image, index) => {
+                  const isLocked = image.private && !privateUnlocked;
 
-          setPreviewImage(image.src);
-        }}
-        className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
-        aria-label={
-          isLocked
-            ? `Unlock ${image.name}`
-            : `Preview ${image.name || `Logo ${index + 1}`}`
-        }
-      >
-        {isLocked ? (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-xl bg-[#090611] text-white">
-            <LockKeyhole className="h-8 w-8 text-[#d96bff]" />
-            <span className="text-sm font-medium">
-              Private Image
-            </span>
-            <span className="text-xs text-white/60">
-              Password required
-            </span>
-          </div>
-        ) : (
-          <>
-            <img
-              src={image.src}
-              alt={image.name || `Logo Design ${index + 1}`}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              width={400}
-              height={224}
-              className="h-56 w-full rounded-xl object-contain"
-            />
+                  return (
+                    <div
+                      key={`${image.src}-${index}`}
+                      className="card-glow group overflow-hidden rounded-2xl border border-[#d96bff50] p-5 transition-[border-color,box-shadow] duration-75 hover:border-[#d96bff] hover:shadow-[0_0_30px_rgba(217,107,255,0.25)] sm:p-6"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (isLocked) {
+                            setPendingProject({
+                              ...selectedProject,
+                              selectedImage: image,
+                            });
+                            setPassword("");
+                            setPasswordError("");
+                            setPasswordModal(true);
+                            return;
+                          }
 
-            <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
-              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                Click to Zoom-in
-                <ZoomIn className="h-4 w-4" />
-              </span>
-            </div>
-          </>
-        )}
-      </button>
+                          setPreviewImage(image.src);
+                        }}
+                        className="group relative flex h-56 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
+                        aria-label={
+                          isLocked
+                            ? `Unlock ${image.name}`
+                            : `Preview ${image.name || `Logo ${index + 1}`}`
+                        }
+                      >
+                        {isLocked ? (
+                          <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-xl bg-[#090611] text-white">
+                            <LockKeyhole className="h-8 w-8 text-[#d96bff]" />
+                            <span className="text-sm font-medium">
+                              Private Image
+                            </span>
+                            <span className="text-xs text-white/60">
+                              Password required
+                            </span>
+                          </div>
+                        ) : (
+                          <>
+                            <img
+                              src={image.src}
+                              alt={image.name || `Logo Design ${index + 1}`}
+                              loading="eager"
+                              fetchPriority="high"
+                              decoding="async"
+                              width={400}
+                              height={224}
+                              className="h-56 w-full rounded-xl object-contain"
+                            />
 
-      <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
-        <h3 className="min-w-0 text-sm font-semibold text-white">
-          {image.name}
-        </h3>
-      </div>
-    </div>
-  );
-})}
+                            <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
+                              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                                Click to Zoom-in
+                                <ZoomIn className="h-4 w-4" />
+                              </span>
+                            </div>
+                          </>
+                        )}
+                      </button>
+
+                      <div className="flex items-center justify-between gap-3 px-1 pb-1 pt-4">
+                        <h3 className="min-w-0 text-sm font-semibold text-white">
+                          {image.name}
+                        </h3>
+                      </div>
+                    </div>
+                  );
+                })}
 
               </div>
 

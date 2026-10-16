@@ -158,7 +158,7 @@ export const aboutPoints = [
   '24/7 Support & Communication',
 ];
 
-export const portfolioFilters = ['All', 'Graphic Designing'];
+export const portfolioFilters = ['All', 'Graphic Designing','Web Designing','Web Development','Video Editing','Content Creator','Content & Copywriting','Branding','App Development','Digital Marketing'];
 
 export const portfolioItems = [
   {
@@ -239,7 +239,7 @@ export const portfolioItems = [
         name: '',
         src: '/assets/full body/9.jpg',
       },
-     
+
     ],
   },
   {
@@ -344,12 +344,12 @@ export const portfolioItems = [
     filter: 'Graphic Designing',
     image: ['/assets/illustrations/Ocean Sceneray.png'],
     images: [
-      
+
       {
         name: '',
         src: '/assets/illustrations/9.jpg',
       },
-      
+
       {
         name: '',
         src: '/assets/illustrations/12.jpg',
@@ -500,7 +500,7 @@ export const portfolioItems = [
         name: "90's Anime Girl Art",
         src: '/assets/sketch/90s Anime Girl Art..png',
       },
-       {
+      {
         name: 'Anime boy Sketch',
         src: '/assets/sketch/Anime boy sketch.png',
       },
@@ -536,7 +536,7 @@ export const portfolioItems = [
         name: 'Sidepose Sketched Art',
         src: '/assets/sketch/Sidepose Sketched.png',
       },
-      
+
       {
         name: 'Sketch Art 2',
         src: '/assets/sketch/Sketch Art 2.png',
@@ -545,12 +545,12 @@ export const portfolioItems = [
         name: '',
         src: '/assets/sketch/1.webp',
       },
-       {
+      {
         name: '',
         src: '/assets/sketch/2.webp',
       },
-       
-      
+
+
     ],
   },
   {
