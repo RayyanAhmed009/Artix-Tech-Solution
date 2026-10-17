@@ -32,7 +32,7 @@ export const navLinks = [
 ];
 
 export const images = {
-  hero: '/assets/3d.png',
+  hero: '/assets/hero.webm',
   office: '/assets/about.jpg',
   mission: 'https://cdn.magicpatterns.com/patterns/generated-images/be892416-25bb-4614-bfbd-710bac890525.jpg',
 };

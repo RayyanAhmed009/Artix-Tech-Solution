@@ -10,7 +10,8 @@ const prefersReducedMotion = () =>
 export default function Hero3D() {
   const tiltRef = useRef(null);
   const imgRef = useRef(null);
-
+ const videoRef = useRef(null);
+ 
   useLayoutEffect(() => {
     const tilt = tiltRef.current;
     const img = imgRef.current;
@@ -57,7 +58,18 @@ export default function Hero3D() {
       ease: createSpring({ stiffness: 140, damping: 18 }),
     });
   };
+   
 
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video || !Number.isFinite(video.duration)) return;
+
+    // Restart just before the final frame
+    if (video.duration - video.currentTime < 0.08) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+  };
   const handleMove = (e) => {
     if (prefersReducedMotion()) return;
     const rect = e.currentTarget.getBoundingClientRect();
@@ -94,12 +106,21 @@ export default function Hero3D() {
         /> */}
 
         {/* Floating logo */}
-        <img
-          ref={imgRef}
-          src={images.hero}
+        <video
+          ref={videoRef}
+          src="/assets/hero.webm"
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          controls={false}
+          loop={false}
+          onTimeUpdate={handleTimeUpdate}
           alt="Glowing 3D Artix 'A' emblem on a holographic platform"
-          className="absolute inset-0 h-full w-full object-contain mix-blend-screen"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
+
+
 
         {/* Platform glow */}
         {/* <div
@@ -108,6 +129,6 @@ export default function Hero3D() {
           aria-hidden="true"
         /> */}
       </div>
-    </div>
+    </div >
   );
 }
