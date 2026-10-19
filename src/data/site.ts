@@ -88,6 +88,7 @@ export const homeServices = [
     title: 'Digital Marketing',
     description: 'Strategic digital marketing solutions that grow your reach and drive results.',
     tone: 'silver',
+    newlyLaunched: true,
   },
 ];
 
@@ -118,34 +119,39 @@ export const allServices = [
     tone: 'blue',
   },
   {
-    icon: ClapperboardIcon,
-    title: 'Content Creator',
-    description: 'Creative and engaging content that captures attention and builds your online presence.',
-    tone: 'pink',
-  },
-  {
-    icon: SquareTextIcon,
-    title: 'Content & Copywriting',
-    description: 'Clear and compelling content that connects with your audience and drives engagement.',
-    tone: 'silver',
-  },
-  {
-    icon: AwardIcon,
-    title: 'Branding',
-    description: 'Strong brand identities that create recognition and leave a lasting impression.',
-    tone: 'blue',
-  },
-  {
     icon: SmartphoneIcon,
     title: 'App Development',
     description: 'Modern and intuitive mobile apps built for seamless and engaging user experiences.',
     tone: 'pink',
   },
   {
+    icon: ClapperboardIcon,
+    title: 'Content Creator',
+    description: 'Creative and engaging content that captures attention and builds your online presence.',
+    tone: 'silver',
+    newlyLaunched: true,
+  },
+  {
+    icon: SquareTextIcon,
+    title: 'Content & Copywriting',
+    description: 'Clear and compelling content that connects with your audience and drives engagement.',
+    tone: 'blue',
+    newlyLaunched: true,
+  },
+  {
+    icon: AwardIcon,
+    title: 'Branding',
+    description: 'Strong brand identities that create recognition and leave a lasting impression.',
+    tone: 'pink',
+    newlyLaunched: true,
+  },
+  
+  {
     icon: MegaphoneIcon,
     title: 'Digital Marketing',
     description: 'Strategic digital marketing solutions that expand your reach and drive real results.',
     tone: 'silver',
+    newlyLaunched: true,
   },
 ];
 

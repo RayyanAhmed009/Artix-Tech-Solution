@@ -10,8 +10,8 @@ const prefersReducedMotion = () =>
 export default function Hero3D() {
   const tiltRef = useRef(null);
   const imgRef = useRef(null);
- const videoRef = useRef(null);
- 
+  const videoRef = useRef(null);
+
   useLayoutEffect(() => {
     const tilt = tiltRef.current;
     const img = imgRef.current;
@@ -58,7 +58,7 @@ export default function Hero3D() {
       ease: createSpring({ stiffness: 140, damping: 18 }),
     });
   };
-   
+
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
@@ -67,7 +67,7 @@ export default function Hero3D() {
     // Restart just before the final frame
     if (video.duration - video.currentTime < 0.08) {
       video.currentTime = 0;
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
   };
   const handleMove = (e) => {
@@ -85,7 +85,7 @@ export default function Hero3D() {
       onMouseLeave={() => {
         if (!prefersReducedMotion()) tiltTo(0, 0);
       }}
-      className="relative mx-auto aspect-square w-full max-w-[580px]"
+      className="relative mx-auto aspect-square w-full max-w-[480px]"
       style={{ perspective: 1200 }}
     >
       <div

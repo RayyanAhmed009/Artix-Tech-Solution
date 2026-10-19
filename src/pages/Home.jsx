@@ -9,7 +9,8 @@ import CTABanner from '../components/CTABanner';
 import Reveal from '../components/Reveal';
 import { homeServices, homeStats } from '../data/site';
 import Review from '../components/Review';
-// import Marquee from '../components/Marquee';
+import NewServicesPopup from '../components/NewServicesPopup';
+import Marquee from '../components/Marquee';
 
 const EASE = 'cubicBezier(0.22, 1, 0.36, 1)';
 
@@ -202,6 +203,7 @@ function Home() {
         </div>
 
       </section>
+      <NewServicesPopup/>
 
       <StatsBar stats={homeStats} />
 
@@ -253,9 +255,9 @@ function Home() {
           ))}
         </div>
       </section>
-      {/* <div className="mt-20">
+      <div className="mt-20">
         <Marquee />
-      </div> */}
+      </div>
       <Reveal delay={0}>
         <div className="mt-20">
           <CTABanner />
