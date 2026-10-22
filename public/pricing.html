@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services & Packages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+/* ---------- Tokens ---------- */
+
+:root {
+  --bg: #000;
+  --card-dark: #121212;
+  --gold-1: #d96bff;
+  --gold-2: #c58f4a;
+  --gold-grad: linear-gradient(
+    90deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
+  --text-dark: #0d0d0d;
+  --text-muted-light: #8a8a8a;
+  --text-muted-dark: #b5b5b5;
+  --radius: 6px;
+  --font-head: "Outfit", sans-serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  color: #fff;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+svg {
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.packages {
+  padding: 24px 0 80px;
+}
+
+/* ---------- Header ---------- */
+.packages__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-1);
+  margin-bottom: 2px;
+}
+
+.packages__heading h2 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 24px;
+  height: 46px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: 1px solid #d96bff50;
+  cursor: pointer;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.btn .arrow {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .2s ease;
+}
+
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn--outline-dark {
+  color: #fff;
+  background: transparent;
+  border-color: #d96bff50;
+}
+
+.btn--outline-dark:hover {
+  border-color: #d96bff;
+  color: #d96bff;
+}
+
+.btn--outline-light {
+  width: 100%;
+  height: 48px;
+  color: var(--text-dark);
+  background: #fff;
+  border-color: #d96bff50;
+}
+
+.btn--outline-light:hover {
+  border-color: #d96bff;
+  color: #d96bff;
+  background: #fff;
+}
+
+.btn--gold {
+  width: 100%;
+  height: 46px;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
+  border-color: #d96bff50;
+}
+
+.btn--gold:hover {
+  border-color: #d96bff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px #d96bff50;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 44px 0 38px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 21px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #151515;
+  border: 1px solid #d96bff50;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .2s ease;
+}
+
+.tab svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tab:hover {
+  border-color: #d96bff;
+  color: #d96bff;
+}
+
+.tab:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid #d96bff;
+  outline-offset: 3px;
+}
+
+.tab.is-active {
+  background: linear-gradient(
+    90deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
+  border-color: #d96bff;
+  color: #fff;
+}
+
+/* ---------- Cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 39px;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 30px 18px;
+  min-height: 580px;
+  border-radius: 8px;
+  border: 1px solid #d96bff50;
+  background: rgba(13, 11, 26, 0.72);
+  color: white;
+  animation: fadeUp .45s ease both;
+}
+
+.card:hover {
+  border-color: #d96bff;
+}
+
+.card:nth-child(2) {
+  animation-delay: .07s;
+}
+
+.card:nth-child(3) {
+  animation-delay: .14s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card--featured {
+  background: var(--card-dark);
+  color: #fff;
+  border: 1px solid #d96bff50;
+  box-shadow: 0 0 40px #d96bff14;
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 7px 17px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
+  border: 1px solid #d96bff50;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.card__icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid #d96bff50;
+  margin-bottom: 20px;
+}
+
+.card__icon:hover {
+  border-color: #d96bff;
+}
+
+.card--featured .card__icon {
+  background: #161616;
+}
+
+.card__icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #d96bff;
+  stroke: #d96bff;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.card__icon svg.stroke-only {
+  fill: none;
+  stroke-width: 2;
+}
+
+.card__title {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card__subtitle {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--text-muted-light);
+}
+
+.card--featured .card__subtitle {
+  color: var(--text-muted-dark);
+}
+
+.card__price {
+  margin-top: 22px;
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.5px;
+}
+
+.card__price small {
+  margin-left: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.card__price--custom {
+  font-size: 32px;
+  letter-spacing: -.3px;
+}
+
+.card__note {
+  margin: 12px 0 28px;
+  font-size: 13.5px;
+  color: var(--text-muted-light);
+}
+
+.card--featured .card__note {
+  color: var(--text-muted-dark);
+}
+
+/* Feature list with custom scrollbar */
+.features {
+  flex: 1;
+  max-height: 240px;
+  overflow-y: auto;
+  list-style: none;
+  padding-right: 14px;
+  margin-bottom: 28px;
+  scrollbar-width: thin;
+  scrollbar-color: #d96bff #e9e9e9;
+}
+
+.card--featured .features {
+  scrollbar-color: #d96bff #f2f2f2;
+}
+
+.features::-webkit-scrollbar {
+  width: 10px;
+}
+
+.features::-webkit-scrollbar-track {
+  background: #e9e9e9;
+  border-radius: 10px;
+}
+
+.card--featured .features::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+
+.features::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
+  border-radius: 10px;
+}
+
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #555;
+}
+
+.card--featured .features li {
+  color: #fff;
+}
+
+.features li svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 4px;
+  fill: none;
+  stroke: #d96bff;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card .btn {
+  margin-top: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .cards {
+    gap: 24px;
+  }
+
+  .card {
+    padding: 16px 22px 18px;
+  }
+}
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+    gap: 36px;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  .card--featured {
+    order: -1;
+    margin-top: 14px;
+  }
+
+  .features {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .packages {
+    padding: 28px 0 60px;
+  }
+
+  .packages__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .packages__header .btn {
+    width: 100%;
+  }
+
+  .tabs {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 28px -20px 32px;
+    padding: 0 20px 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+  }
+
+  .card__price,
+  .card__price--custom {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-inline: 14px;
+  }
+
+  .tabs {
+    margin-inline: -14px;
+    padding-inline: 14px;
+  }
+
+  .card {
+    padding: 16px 18px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .cards { gap: 24px; }
+  .card { padding: 16px 22px 18px; }
+}
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+    gap: 36px;
+  }
+  .card { min-height: 0; }
+  .card--featured { order: -1; margin-top: 14px; }
+  .features { max-height: 300px; }
+}
+
+@media (max-width: 640px) {
+  .packages { padding: 28px 0 60px; }
+
+  .packages__header { flex-direction: column; align-items: stretch; }
+  .packages__header .btn { width: 100%; }
+
+  /* horizontally scrollable pill tabs */
+  .tabs {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 28px -20px 32px;
+    padding: 0 20px 6px;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .card__price, .card__price--custom { font-size: 28px; }
+}
+
+@media (max-width: 380px) {
+  .container { padding-inline: 14px; }
+  .tabs { margin-inline: -14px; padding-inline: 14px; }
+  .card { padding: 16px 18px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+</style>
+</head>
+<body>
+  <section class="packages" id="packages">
+    <div class="container">
+
+      <!-- Header -->
+      <header class="packages__header">
+        <div class="packages__heading">
+          <span class="eyebrow">Services &amp; Packages</span>
+          <h2>Flexible Solutions for Every Stage</h2>
+        </div>
+        <a href="#compare" class="btn btn--outline-dark">
+          Compare Packages
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </header>
+
+      <!-- Tabs -->
+      <nav class="tabs" role="tablist" aria-label="Service categories">
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="website">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+          Website
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="branding">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 1.6-2.1-.4-1.1.2-2.4 1.5-2.4H17a4 4 0 0 0 4-4c0-5-4-9.5-9-9.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>
+          Branding
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg>
+          Logo Design
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="uiux">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8z"/></svg>
+          UI / UX
+        </button>
+      </nav>
+
+      <!-- Cards (rendered by script.js) -->
+      <div class="cards" id="cards" aria-live="polite"></div>
+
+    </div>
+  </section>
+
+  <script>
+/* ---------- Icons ---------- */
+const ICONS = {
+  rocket: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-4A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg>',
+  laptop: '<svg class="stroke-only" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20M10 9l-2 2 2 2M14 9l2 2-2 2"/></svg>',
+  layers: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 12l10 5 10-5" fill="none"/><path d="M2 17l10 5 10-5" fill="none"/></svg>',
+  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>',
+  arrow: '<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+};
+
+/* ---------- Data (edit freely) ---------- */
+const PACKAGES = {
+  website: [
+    {
+      icon: 'rocket', title: 'Start up', subtitle: 'Perfect for Small Businesses & Personal Brands',
+      price: '$1,599', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      features: [
+        'FREE Favicon Design', 'Cross Browser Compatible', 'Complete W3C Certified HTML',
+        'Website Initial Concepts in 48 Hours', 'Complete Design & Deployment', '100% Ownership Rights',
+        '100% Satisfaction Guarantee', '100% Unique Design Guarantee', '100% Money Back Guarantee'
+      ],
+      cta: 'Get Started', variant: 'light'
+    },
+    {
+      icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Businesses', badge: 'Most Popular',
+      price: '$2899', currency: 'AUD', note: 'One-time Payment • Best Value',
+      features: [
+        '10 Page Website', 'Custom Layout Design', 'Contact/Query Form', '3 Banner Designs',
+        '5 Stock Photos (You can provide us more)', 'Free Mobile Responsive', 'FREE Google Friendly Sitemap',
+        'Complete W3C Certified HTML', 'Website Initial Concepts in 48 Hours', 'Complete Design & Deployment'
+      ],
+      cta: 'Get Started', variant: 'featured'
+    },
+    {
+      icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
+      price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
+      features: [
+        'Unlimited Pages', 'Fully Bespoke Design & Development', 'Advanced Functionality & API Integrations',
+        'E-Commerce / Booking System', 'Custom Dashboard (if needed)', 'Ongoing Maintenance & Support',
+        'Dedicated Project Manager', 'Performance & Security Audit'
+      ],
+      cta: 'Book a Free Consultation', variant: 'light'
+    }
+  ],
+
+  branding: [
+    {
+      icon: 'rocket', title: 'Start up', subtitle: 'Perfect for New Businesses',
+      price: '$999', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      features: ['Logo Design (3 Concepts)', 'Colour Palette', 'Typography Selection', 'Business Card Design', 'Social Media Profile Kit', 'Basic Brand Guidelines', '100% Ownership Rights'],
+      cta: 'Get Started', variant: 'light'
+    },
+    {
+      icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Businesses', badge: 'Most Popular',
+      price: '$2199', currency: 'AUD', note: 'One-time Payment • Best Value',
+      features: ['Logo Design (5 Concepts)', 'Full Colour & Type System', 'Stationery Suite', 'Social Media Templates', 'Brand Guidelines Document', 'Packaging / Label Concept', 'Unlimited Revisions', '100% Ownership Rights'],
+      cta: 'Get Started', variant: 'featured'
+    },
+    {
+      icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
+      price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
+      features: ['Complete Brand Strategy', 'Brand Naming & Messaging', 'Full Identity System', 'Print & Digital Collateral', 'Brand Rollout Support', 'Dedicated Creative Lead'],
+      cta: 'Book a Free Consultation', variant: 'light'
+    }
+  ],
+
+  logo: [
+    {
+      icon: 'rocket', title: 'Start up', subtitle: 'Perfect for Personal Brands',
+      price: '$299', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      features: ['2 Logo Concepts', '2 Revisions', 'Print-Ready Files', 'Transparent PNG', 'FREE Favicon Design', '100% Ownership Rights'],
+      cta: 'Get Started', variant: 'light'
+    },
+    {
+      icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Businesses', badge: 'Most Popular',
+      price: '$599', currency: 'AUD', note: 'One-time Payment • Best Value',
+      features: ['5 Logo Concepts', 'Unlimited Revisions', 'All Source Files (AI, EPS, SVG)', 'Social Media Kit', 'Business Card Design', 'FREE Favicon Design', '100% Money Back Guarantee'],
+      cta: 'Get Started', variant: 'featured'
+    },
+    {
+      icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
+      price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
+      features: ['Logo System & Sub-Marks', 'Animated Logo', 'Trademark-Ready Files', 'Usage Guidelines', 'Dedicated Designer'],
+      cta: 'Book a Free Consultation', variant: 'light'
+    }
+  ],
+
+  uiux: [
+    {
+      icon: 'rocket', title: 'Start up', subtitle: 'Perfect for MVPs & Prototypes',
+      price: '$1,299', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      features: ['Up to 5 Screens', 'Wireframes', 'Clickable Prototype', 'Mobile & Desktop Layouts', 'Design Handoff Files', '100% Ownership Rights'],
+      cta: 'Get Started', variant: 'light'
+    },
+    {
+      icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Products', badge: 'Most Popular',
+      price: '$3199', currency: 'AUD', note: 'One-time Payment • Best Value',
+      features: ['Up to 15 Screens', 'User Flow Mapping', 'Wireframes & Hi-Fi Designs', 'Interactive Prototype', 'Design System / UI Kit', 'Usability Review', 'Developer Handoff'],
+      cta: 'Get Started', variant: 'featured'
+    },
+    {
+      icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
+      price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
+      features: ['Unlimited Screens', 'User Research & Testing', 'Full Design System', 'Accessibility Audit', 'Ongoing Design Support', 'Dedicated UX Lead'],
+      cta: 'Book a Free Consultation', variant: 'light'
+    }
+  ]
+};
+
+/* ---------- Rendering ---------- */
+const cardsEl = document.getElementById('cards');
+const tabs = document.querySelectorAll('.tab');
+
+const escapeHTML = (s) =>
+  s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function cardTemplate(p) {
+  const featured = p.variant === 'featured';
+  const price = p.currency
+    ? `<div class="card__price">${escapeHTML(p.price)}<small>${p.currency}</small></div>`
+    : `<div class="card__price card__price--custom">${escapeHTML(p.price)}</div>`;
+
+  return `
+    <article class="card${featured ? ' card--featured' : ''}">
+      ${p.badge ? `<span class="badge">${escapeHTML(p.badge)}</span>` : ''}
+      <div class="card__icon">${ICONS[p.icon]}</div>
+      <h3 class="card__title">${escapeHTML(p.title)}</h3>
+      <p class="card__subtitle">${escapeHTML(p.subtitle)}</p>
+      ${price}
+      <p class="card__note">${escapeHTML(p.note)}</p>
+      <ul class="features">
+        ${p.features.map((f) => `<li>${ICONS.check}<span>${escapeHTML(f)}</span></li>`).join('')}
+      </ul>
+      <a href="#contact" class="btn ${featured ? 'btn--gold' : 'btn--outline-light'}">
+        ${escapeHTML(p.cta)} ${ICONS.arrow}
+      </a>
+    </article>`;
+}
+
+function render(tab) {
+  cardsEl.innerHTML = PACKAGES[tab].map(cardTemplate).join('');
+}
+
+/* ---------- Tabs ---------- */
+
+function activate(tabBtn) {
+  tabs.forEach((t) => {
+    const on = t === tabBtn;
+    t.classList.toggle('is-active', on);
+    t.setAttribute('aria-selected', String(on));
+  });
+
+  render(tabBtn.dataset.tab);
+
+  // Scroll only the tabs container, not the entire page
+  const tabsContainer = document.querySelector('.tabs');
+
+  if (!tabsContainer || !tabBtn) return;
+
+  const containerRect = tabsContainer.getBoundingClientRect();
+  const tabRect = tabBtn.getBoundingClientRect();
+
+  const targetLeft =
+    tabsContainer.scrollLeft +
+    tabRect.left -
+    containerRect.left -
+    (containerRect.width - tabRect.width) / 2;
+
+  tabsContainer.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto'
+      : 'smooth',
+  });
+}
+
+
+tabs.forEach((t) => t.addEventListener('click', () => activate(t)));
+
+// Arrow-key navigation between tabs
+document.querySelector('.tabs').addEventListener('keydown', (e) => {
+  if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+  const list = [...tabs];
+  const i = list.indexOf(document.activeElement);
+  if (i === -1) return;
+  const next = list[(i + (e.key === 'ArrowRight' ? 1 : -1) + list.length) % list.length];
+  next.focus();
+  activate(next);
+});
+
+render('website');
+
+</script>
+</body>
+</html>

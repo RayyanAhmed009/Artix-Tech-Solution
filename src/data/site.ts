@@ -593,7 +593,36 @@ export const portfolioItems = [
   },
 
 
-  // { title: 'Website Design', category: 'Web Design', filter: 'Web Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0bf0a15-01a4-412b-b195-79c5dae8af84.jpg' },
+  {
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/1.mp4",
+},
+ {
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/2.mp4",
+},
+ {
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/3.mp4",
+},
+{
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/4.mp4",
+},
+{
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/5.mp4",
+},
   // { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
   // { title: 'Product Poster Design', category: 'Graphic Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/8918f984-b24f-44d1-83e0-3b0f420aa2a0.jpg' },
   // { title: 'Gaming Character', category: 'Character Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/23dd2dba-f268-47ca-9262-0c4176fb2d0c.jpg' },

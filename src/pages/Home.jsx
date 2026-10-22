@@ -11,6 +11,7 @@ import { homeServices, homeStats } from '../data/site';
 import Review from '../components/Review';
 import NewServicesPopup from '../components/NewServicesPopup';
 import Marquee from '../components/Marquee';
+import Pricing from '../components/Pricing';
 
 const EASE = 'cubicBezier(0.22, 1, 0.36, 1)';
 
@@ -258,6 +259,12 @@ function Home() {
       <div className="mt-20">
         <Marquee />
       </div>
+       {/* <div className="mt-20">
+        <Pricing/>
+      </div> */}
+
+
+
       <Reveal delay={0}>
         <div className="mt-20">
           <CTABanner />

@@ -73,85 +73,98 @@ function Portfolio() {
   </div>
 </div>
       {/* Portfolio Cards */}
-      <motion.div
-        layout
-        className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+     
+<motion.div
+  layout
+  className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+>
+  <AnimatePresence mode="popLayout">
+   
+{visible.map((project, index) => (
+  <motion.div
+    key={project.video || project.title + "-" + index}
+    layout
+    initial={{ opacity: 0, scale: 0.94, y: 20 }}
+    animate={{ opacity: 1, scale: 1, y: 0 }}
+    exit={{ opacity: 0, scale: 0.94, y: 10 }}
+    transition={{
+      duration: 0.35,
+      delay: index * 0.06,
+      ease: [0.23, 1, 0.32, 1],
+    }}
+    className="min-w-0"
+  >
+    {project.video ? (
+      /* Video only — no card */
+      <video
+        src={project.video}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        controls
+        className="card-glow block h-64 sm:h-56 lg:h-[350px] w-full rounded-xl border border-[#d96bff50] object-contain"
+      />
+    ) : (
+      /* Existing image card */
+      <TiltCard
+        intensity={7}
+        className="card-glow group h-full overflow-hidden rounded-xl border border-[#d96bff50]"
       >
-        <AnimatePresence mode="popLayout">
-          {visible.map((project, index) => (
-            <motion.article
-              key={project.title}
-              layout
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 10 }}
-              transition={{
-                duration: 0.35,
-                delay: index * 0.06,
-                ease: [0.23, 1, 0.32, 1],
-              }}
-            >
-              <TiltCard
-                intensity={7}
-                className="card-glow group h-full overflow-hidden rounded-xl"
-              >
-                <button
-                  type="button"
-                  onClick={() => setSelectedProject(project)}
-                  className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
-                  aria-label={`Open ${project.title} gallery`}
-                >
-                  {/* Cover Image */}
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="eager"
-                      fetchPriority="high"
-                      decoding="sync"
-                      width={600}
-                      height={400}
-                      className="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                    />
+        <button
+          type="button"
+          onClick={() => setSelectedProject(project)}
+          className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
+          aria-label={`Open ${project.title} gallery`}
+        >
+          <div className="relative overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={600}
+              height={400}
+              className="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+            />
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
+            <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
+              <span className="mobile-view-hint flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                Click to View
+                <ExternalLink className="h-4 w-4" />
+              </span>
+            </div>
 
-                      <span className="flex translate-y-0 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                        Click to View
-                        <ExternalLink className="h-4 w-4" />
-                      </span>
+            <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+              {(project.images || [project.image]).length} Projects
+            </span>
+          </div>
 
-                    </div>
+          <div className="flex items-center justify-between gap-3 px-5 py-5">
+            <div>
+              <h2 className="text-[15px] font-semibold text-white">
+                {project.title}
+              </h2>
+              <p className="mt-1.5 text-[13px] text-white/55">
+                {project.category}
+              </p>
+            </div>
 
-                    {/* Image Count */}
-                    <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
-                      {(project.images || [project.image]).length} Projects
-                    </span>
-                  </div>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neon-pink/25 text-neon-pink transition-all duration-300 group-hover:border-neon-pink group-hover:bg-neon-pink/10">
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
+            </span>
+          </div>
+        </button>
+      </TiltCard>
+    )}
+  </motion.div>
+))}
 
-                  {/* Card Details */}
-                  <div className="flex items-center justify-between gap-3 px-5 py-5">
-                    <div>
-                      <h2 className="text-[15px] font-semibold text-white">
-                        {project.title}
-                      </h2>
+  </AnimatePresence>
+</motion.div>
 
-                      <p className="mt-1.5 text-[13px] text-white/55">
-                        {project.category}
-                      </p>
-                    </div>
-
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neon-pink/25 text-neon-pink transition-all duration-300 group-hover:border-neon-pink group-hover:bg-neon-pink/10">
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
-                    </span>
-                  </div>
-                </button>
-              </TiltCard>
-            </motion.article>
-          ))}
-        </AnimatePresence>
-      </motion.div>
 
       {/* Empty State */}
       {visible.length === 0 && (
