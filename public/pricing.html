@@ -142,8 +142,14 @@ svg {
 .btn--outline-light {
   width: 100%;
   height: 48px;
-  color: var(--text-dark);
-  background: #fff;
+  color: white;
+   background: linear-gradient(
+    90deg,
+    #f02bea 0%,
+    #b42df2 30%,
+    #6355f5 62%,
+    #21b9f5 100%
+  );
   border-color: #d96bff50;
 }
 
@@ -282,7 +288,7 @@ svg {
 }
 
 .card--featured {
-  background: var(--card-dark);
+   background: rgba(13, 11, 26, 0.72);
   color: #fff;
   border: 1px solid #d96bff50;
   box-shadow: 0 0 40px #d96bff14;
@@ -439,7 +445,7 @@ svg {
   padding: 6px 0;
   font-size: 13.5px;
   line-height: 1.45;
-  color: #555;
+  color: white;
 }
 
 .card--featured .features li {
@@ -620,10 +626,7 @@ svg {
           <span class="eyebrow">Services &amp; Packages</span>
           <h2>Flexible Solutions for Every Stage</h2>
         </div>
-        <a href="#compare" class="btn btn--outline-dark">
-          Compare Packages
-          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+        
       </header>
 
       <!-- Tabs -->
@@ -667,7 +670,7 @@ const PACKAGES = {
   website: [
     {
       icon: 'rocket', title: 'Start up', subtitle: 'Perfect for Small Businesses & Personal Brands',
-      price: '$1,599', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      price: '$1,599', currency: 'USD', note: 'One-time Payment • No Monthly Fees',
       features: [
         'FREE Favicon Design', 'Cross Browser Compatible', 'Complete W3C Certified HTML',
         'Website Initial Concepts in 48 Hours', 'Complete Design & Deployment', '100% Ownership Rights',
@@ -677,13 +680,13 @@ const PACKAGES = {
     },
     {
       icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Businesses', badge: 'Most Popular',
-      price: '$2899', currency: 'AUD', note: 'One-time Payment • Best Value',
+      price: '$2899', currency: 'USD', note: 'One-time Payment • Best Value',
       features: [
         '10 Page Website', 'Custom Layout Design', 'Contact/Query Form', '3 Banner Designs',
         '5 Stock Photos (You can provide us more)', 'Free Mobile Responsive', 'FREE Google Friendly Sitemap',
         'Complete W3C Certified HTML', 'Website Initial Concepts in 48 Hours', 'Complete Design & Deployment'
       ],
-      cta: 'Get Started', variant: 'featured'
+      cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
@@ -693,70 +696,70 @@ const PACKAGES = {
         'E-Commerce / Booking System', 'Custom Dashboard (if needed)', 'Ongoing Maintenance & Support',
         'Dedicated Project Manager', 'Performance & Security Audit'
       ],
-      cta: 'Book a Free Consultation', variant: 'light'
+      cta: 'Get Started', variant: 'light'
     }
   ],
 
   branding: [
     {
       icon: 'rocket', title: 'Start up', subtitle: 'Perfect for New Businesses',
-      price: '$999', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      price: '$999', currency: 'USD', note: 'One-time Payment • No Monthly Fees',
       features: ['Logo Design (3 Concepts)', 'Colour Palette', 'Typography Selection', 'Business Card Design', 'Social Media Profile Kit', 'Basic Brand Guidelines', '100% Ownership Rights'],
       cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Businesses', badge: 'Most Popular',
-      price: '$2199', currency: 'AUD', note: 'One-time Payment • Best Value',
+      price: '$2199', currency: 'USD', note: 'One-time Payment • Best Value',
       features: ['Logo Design (5 Concepts)', 'Full Colour & Type System', 'Stationery Suite', 'Social Media Templates', 'Brand Guidelines Document', 'Packaging / Label Concept', 'Unlimited Revisions', '100% Ownership Rights'],
-      cta: 'Get Started', variant: 'featured'
+      cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
       price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
       features: ['Complete Brand Strategy', 'Brand Naming & Messaging', 'Full Identity System', 'Print & Digital Collateral', 'Brand Rollout Support', 'Dedicated Creative Lead'],
-      cta: 'Book a Free Consultation', variant: 'light'
+      cta: 'Get Started', variant: 'light'
     }
   ],
 
   logo: [
     {
       icon: 'rocket', title: 'Start up', subtitle: 'Perfect for Personal Brands',
-      price: '$299', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      price: '$199', currency: 'USD', note: 'One-time Payment • No Monthly Fees',
       features: ['2 Logo Concepts', '2 Revisions', 'Print-Ready Files', 'Transparent PNG', 'FREE Favicon Design', '100% Ownership Rights'],
-      cta: 'Get Started', variant: 'light'
+     cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Businesses', badge: 'Most Popular',
-      price: '$599', currency: 'AUD', note: 'One-time Payment • Best Value',
+      price: '$399', currency: 'USD', note: 'One-time Payment • Best Value',
       features: ['5 Logo Concepts', 'Unlimited Revisions', 'All Source Files (AI, EPS, SVG)', 'Social Media Kit', 'Business Card Design', 'FREE Favicon Design', '100% Money Back Guarantee'],
-      cta: 'Get Started', variant: 'featured'
+      cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
       price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
       features: ['Logo System & Sub-Marks', 'Animated Logo', 'Trademark-Ready Files', 'Usage Guidelines', 'Dedicated Designer'],
-      cta: 'Book a Free Consultation', variant: 'light'
+    cta: 'Get Started', variant: 'light'
     }
   ],
 
   uiux: [
     {
       icon: 'rocket', title: 'Start up', subtitle: 'Perfect for MVPs & Prototypes',
-      price: '$1,299', currency: 'AUD', note: 'One-time Payment • No Monthly Fees',
+      price: '$1,299', currency: 'USD', note: 'One-time Payment • No Monthly Fees',
       features: ['Up to 5 Screens', 'Wireframes', 'Clickable Prototype', 'Mobile & Desktop Layouts', 'Design Handoff Files', '100% Ownership Rights'],
       cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'laptop', title: 'Essential', subtitle: 'Ideal for Growing Products', badge: 'Most Popular',
-      price: '$3199', currency: 'AUD', note: 'One-time Payment • Best Value',
+      price: '$3199', currency: 'USD', note: 'One-time Payment • Best Value',
       features: ['Up to 15 Screens', 'User Flow Mapping', 'Wireframes & Hi-Fi Designs', 'Interactive Prototype', 'Design System / UI Kit', 'Usability Review', 'Developer Handoff'],
-      cta: 'Get Started', variant: 'featured'
+      cta: 'Get Started', variant: 'light'
     },
     {
       icon: 'layers', title: 'Scale', subtitle: 'For Established Brands & Enterprises',
       price: 'Custom Pricing', note: 'Tailored Enterprise Solution',
       features: ['Unlimited Screens', 'User Research & Testing', 'Full Design System', 'Accessibility Audit', 'Ongoing Design Support', 'Dedicated UX Lead'],
-      cta: 'Book a Free Consultation', variant: 'light'
+      cta: 'Get Started', variant: 'light'
     }
   ]
 };

@@ -12,6 +12,7 @@ import Review from '../components/Review';
 import NewServicesPopup from '../components/NewServicesPopup';
 import Marquee from '../components/Marquee';
 import Pricing from '../components/Pricing';
+import HowWeWork from '../components/HowWeWork';
 
 const EASE = 'cubicBezier(0.22, 1, 0.36, 1)';
 
@@ -164,8 +165,8 @@ function Home() {
                   key={line}
                   data-a={`line-${i}`}
                   className={`block ${i === 0
-                      ? "text-gradient-soft"
-                      : "text-gradient"
+                    ? "text-gradient-soft"
+                    : "text-gradient"
                     }`}
                 >
                   {line}
@@ -204,7 +205,7 @@ function Home() {
         </div>
 
       </section>
-      <NewServicesPopup/>
+      <NewServicesPopup />
 
       <StatsBar stats={homeStats} />
 
@@ -259,17 +260,20 @@ function Home() {
       <div className="mt-20">
         <Marquee />
       </div>
-       {/* <div className="mt-20">
-        <Pricing/>
-      </div> */}
+    
 
-
+      <div className="mt-20">
+        <HowWeWork />
+      </div>
 
       <Reveal delay={0}>
         <div className="mt-20">
           <CTABanner />
         </div>
       </Reveal>
+      <div className="mt-20">
+        <Pricing/>
+      </div>
 
       <div className="mt-10">
         <Review />

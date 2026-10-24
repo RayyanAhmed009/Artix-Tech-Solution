@@ -48,7 +48,7 @@ export default function Pricing() {
   }, []);
 
   return (
-    <section className="card-glow mx-auto max-w-7xl px-6 lg:px-10 overflow-hidden border border-[#d96bff50]">
+    <section className="mx-auto max-w-7xl px-6 lg:px-10 overflow-hidden">
       <iframe
         ref={iframeRef}
         src="/pricing.html"
