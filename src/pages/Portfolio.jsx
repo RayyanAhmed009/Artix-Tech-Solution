@@ -7,14 +7,13 @@ import TiltCard from "../components/TiltCard";
 import { portfolioFilters, portfolioItems } from "../data/site";
 
 function Portfolio() {
-  const [active, setActive] = useState("All");
+  const [active, setActive] = useState(portfolioFilters[0]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
 
-  const visible =
-    active === "All"
-      ? portfolioItems
-      : portfolioItems.filter((p) => p.filter === active);
+  const visible = portfolioItems.filter(
+    (project) => project.filter === active
+  );
 
   return (
     <section
@@ -44,126 +43,126 @@ function Portfolio() {
 
       {/* Category Filters */}
       <div className="mt-9 w-full min-w-0 lg:pl-11">
-  <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain scrollbar-hide sm:overflow-x-visible">
-    <div
-      className="flex w-max min-w-full flex-nowrap items-center gap-3 px-1 pb-2 sm:w-full sm:flex-wrap sm:justify-center sm:px-0"
-      role="tablist"
-    >
-        {portfolioFilters.map((filter) => (
-          <button
-            key={filter}
-            type="button"
-            role="tab"
-            aria-selected={active === filter}
-            onClick={() => setActive(filter)}
-            className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium
+        <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain scrollbar-hide sm:overflow-x-visible">
+          <div
+            className="flex w-max min-w-full flex-nowrap items-center gap-3 px-1 pb-2 sm:w-full sm:flex-wrap sm:justify-center sm:px-0"
+            role="tablist"
+          >
+            {portfolioFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                role="tab"
+                aria-selected={active === filter}
+                onClick={() => setActive(filter)}
+                className={`h-10 whitespace-nowrap rounded-md px-4 text-sm font-medium
     transition-all duration-200
     !outline-none !ring-0 !ring-offset-0
     focus:!outline-none focus:!ring-0 focus-visible:!outline-none
     active:!border-[#d96bff]
     ${active === filter
-                ? "btn-gradient !border-transparent text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
-                : "!border !border-[#d96bff50] !bg-white/[0.04] text-white/70 hover:!border-[#d96bff] hover:text-white"
-              }`}
-          >
-            {filter}
-          </button>
-        ))}
-       </div>
-  </div>
-</div>
+                    ? "btn-gradient !border-transparent text-white shadow-[0_0_20px_rgba(168,60,245,0.2)]"
+                    : "!border !border-[#d96bff50] !bg-white/[0.04] text-white/70 hover:!border-[#d96bff] hover:text-white"
+                  }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
       {/* Portfolio Cards */}
-     
-<motion.div
-  layout
-  className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
->
-  <AnimatePresence mode="popLayout">
-   
-{visible.map((project, index) => (
-  <motion.div
-    key={project.video || project.title + "-" + index}
-    layout
-    initial={{ opacity: 0, scale: 0.94, y: 20 }}
-    animate={{ opacity: 1, scale: 1, y: 0 }}
-    exit={{ opacity: 0, scale: 0.94, y: 10 }}
-    transition={{
-      duration: 0.35,
-      delay: index * 0.06,
-      ease: [0.23, 1, 0.32, 1],
-    }}
-    className="min-w-0"
-  >
-    {project.video ? (
-      /* Video only — no card */
-      <video
-        src={project.video}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        controls
-        className="card-glow block h-64 sm:h-56 lg:h-[350px] w-full rounded-xl border border-[#d96bff50] object-contain"
-      />
-    ) : (
-      /* Existing image card */
-      <TiltCard
-        intensity={7}
-        className="card-glow group h-full overflow-hidden rounded-xl border border-[#d96bff50]"
+
+      <motion.div
+        layout
+        className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
-        <button
-          type="button"
-          onClick={() => setSelectedProject(project)}
-          className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
-          aria-label={`Open ${project.title} gallery`}
-        >
-          <div className="relative overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.title}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              width={600}
-              height={400}
-              className="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-            />
+        <AnimatePresence mode="popLayout">
 
-            <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
-              <span className="mobile-view-hint flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                Click to View
-                <ExternalLink className="h-4 w-4" />
-              </span>
-            </div>
+          {visible.map((project, index) => (
+            <motion.div
+              key={project.video || project.title + "-" + index}
+              layout
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 10 }}
+              transition={{
+                duration: 0.35,
+                delay: index * 0.06,
+                ease: [0.23, 1, 0.32, 1],
+              }}
+              className="min-w-0"
+            >
+              {project.video ? (
+                /* Video only — no card */
+                <video
+                  src={project.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  controls
+                  className="card-glow block h-64 sm:h-56 lg:h-[350px] w-full rounded-xl border border-[#d96bff50] object-contain"
+                />
+              ) : (
+                /* Existing image card */
+                <TiltCard
+                  intensity={7}
+                  className="card-glow group h-full overflow-hidden rounded-xl border border-[#d96bff50]"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
+                    aria-label={`Open ${project.title} gallery`}
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading={index < 3 ? "eager" : "lazy"}
+                        fetchPriority={index === 0 ? "high" : "auto"}
+                        decoding="async"
+                        width={600}
+                        height={400}
+                        className="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                      />
 
-            <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
-              {(project.images || [project.image]).length} Projects
-            </span>
-          </div>
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#090611]/20 transition-colors group-hover:bg-[#090611]/55">
+                        <span className="mobile-view-hint flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                          Click to View
+                          <ExternalLink className="h-4 w-4" />
+                        </span>
+                      </div>
 
-          <div className="flex items-center justify-between gap-3 px-5 py-5">
-            <div>
-              <h2 className="text-[15px] font-semibold text-white">
-                {project.title}
-              </h2>
-              <p className="mt-1.5 text-[13px] text-white/55">
-                {project.category}
-              </p>
-            </div>
+                      <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                        {(project.images || [project.image]).length} Projects
+                      </span>
+                    </div>
 
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neon-pink/25 text-neon-pink transition-all duration-300 group-hover:border-neon-pink group-hover:bg-neon-pink/10">
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
-            </span>
-          </div>
-        </button>
-      </TiltCard>
-    )}
-  </motion.div>
-))}
+                    <div className="flex items-center justify-between gap-3 px-5 py-5">
+                      <div>
+                        <h2 className="text-[15px] font-semibold text-white">
+                          {project.title}
+                        </h2>
+                        <p className="mt-1.5 text-[13px] text-white/55">
+                          {project.category}
+                        </p>
+                      </div>
 
-  </AnimatePresence>
-</motion.div>
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neon-pink/25 text-neon-pink transition-all duration-300 group-hover:border-neon-pink group-hover:bg-neon-pink/10">
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
+                      </span>
+                    </div>
+                  </button>
+                </TiltCard>
+              )}
+            </motion.div>
+          ))}
+
+        </AnimatePresence>
+      </motion.div>
 
 
       {/* Empty State */}
@@ -183,7 +182,7 @@ function Portfolio() {
             Start Your Project
           </span>
 
-          <span className="flex w-12 items-center justify-center border border-l-0 border-neon-blue/40 bg-ink text-neon-blue">
+          <span className="flex w-12 items-center justify-center border border-l-0 border-neon-blue/40  text-neon-blue">
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
           </span>
         </Link>

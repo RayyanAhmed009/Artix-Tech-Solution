@@ -13,6 +13,7 @@ import NewServicesPopup from '../components/NewServicesPopup';
 import Marquee from '../components/Marquee';
 import Pricing from '../components/Pricing';
 import HowWeWork from '../components/HowWeWork';
+import FaqSection from '../components/FaqSection';
 
 const EASE = 'cubicBezier(0.22, 1, 0.36, 1)';
 
@@ -215,7 +216,7 @@ function Home() {
       >
         {/* LEFT CONTENT */}
         <Reveal direction="left" delay={0}>
-          <p className="text-xs font-semibold tracking-[0.15em] text-white/80">
+          <p className="text-xs font-semibold tracking-[0.15em] text-[#f3a8ff]">
             OUR SERVICES
           </p>
 
@@ -273,6 +274,9 @@ function Home() {
       </Reveal>
       <div className="mt-20">
         <Pricing/>
+      </div>
+      <div className="mt-10">
+        <FaqSection/>
       </div>
 
       <div className="mt-10">

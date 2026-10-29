@@ -17,18 +17,16 @@ import {
 } from "react-router-dom";
 
 function AppContent() {
-  const [loading, setLoading] = useState(true);
-  const location = useLocation();
+ const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2500);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, []);
+
 
   return (
     <>

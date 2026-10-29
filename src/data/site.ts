@@ -165,7 +165,7 @@ export const aboutPoints = [
   '24/7 Support & Communication',
 ];
 
-export const portfolioFilters = ['All', 'Graphic Designing','Web Designing','Web Development','Video Editing','Content Creator','Content & Copywriting','Branding','App Development','Digital Marketing'];
+export const portfolioFilters = ['Graphic Designing','Web Designing','Web Development','Video Editing','Content Creator','Content & Copywriting','Branding','App Development','Digital Marketing'];
 
 export const portfolioItems = [
   {
@@ -623,6 +623,30 @@ export const portfolioItems = [
   category: "Video Editing",
   filter: "Video Editing",
   video: "/assets/video/5.mp4",
+},
+{
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/6.mp4",
+},
+{
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/7.mp4",
+},
+{
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/8.mp4",
+},
+{
+  title: "Video Editing",
+  category: "Video Editing",
+  filter: "Video Editing",
+  video: "/assets/video/9.mp4",
 },
   // { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
   // { title: 'Product Poster Design', category: 'Graphic Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/8918f984-b24f-44d1-83e0-3b0f420aa2a0.jpg' },

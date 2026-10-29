@@ -8,22 +8,37 @@ import {
 } from "react-icons/fa";
 
 import {
-  SiVite,
+
   SiTailwindcss,
   SiMongodb,
+  SiTypescript,
+  SiNextdotjs,
+  SiBootstrap,
+  SiPostman,
+  SiVercel,
 } from "react-icons/si";
 import { TbBrandAdobeIllustrator, TbBrandAdobePhotoshop } from "react-icons/tb";
+import {
+  FaGitAlt,
+  FaGithub,
+} from "react-icons/fa";
 const technologies = [
   { name: "Photoshop", icon: TbBrandAdobePhotoshop, color: "#31A8FF" },
   { name: "Illustrator", icon: TbBrandAdobeIllustrator, color: "#FF9A00" },
   { name: "React", icon: FaReact, color: "#61DAFB" },
   { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
-  { name: "Vite", icon: SiVite, color: "#BD34FE" },
   { name: "Node.js", icon: FaNodeJs, color: "#68A063" },
   { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
   { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
   { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+  { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
+  { name: "Git", icon: FaGitAlt, color: "#F05032" },
+  { name: "GitHub", icon: FaGithub, color: "#FFFFFF" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+  { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
 ];
 
 export default function Marquee() {

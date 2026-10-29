@@ -1,7 +1,7 @@
 import React from 'react';
 // import  ParticleField  from '../components/ParticleField';
-import  ServiceCard  from '../components/ServiceCard';
-import  Reveal  from '../components/Reveal';
+import ServiceCard from '../components/ServiceCard';
+import Reveal from '../components/Reveal';
 import { allServices } from '../data/site';
 
 function Services() {
@@ -13,13 +13,13 @@ function Services() {
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.15em] text-neon-pink">OUR SERVICES</p>
             <h1 className="mt-4 text-3xl font-semibold leading-tight sm:text-3xl">
-      We Provide Best
-    </h1>
-           <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-5xl lg:text-5xl">
-    <span className="text-gradient-blue">
-      Digital Services
-    </span>
-  </h2>
+              We Provide Best
+            </h1>
+            <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-5xl lg:text-5xl">
+              <span className="text-gradient-blue">
+                Digital Services
+              </span>
+            </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 sm:text-base">
               We combine creativity, technology and strategy to deliver exceptional digital solutions.
             </p>
