@@ -165,7 +165,7 @@ export const aboutPoints = [
   '24/7 Support & Communication',
 ];
 
-export const portfolioFilters = ['Graphic Designing','Web Designing','Web Development','Video Editing','Content Creator','Content & Copywriting','Branding','App Development','Digital Marketing'];
+export const portfolioFilters = ['Graphic Designing','Web Designing','Web Development','Video Editing', 'App Development','Content Creator','Content & Copywriting','Branding','Digital Marketing'];
 
 export const portfolioItems = [
   {
@@ -384,7 +384,7 @@ export const portfolioItems = [
     title: 'LOGO DESIGN',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
-    image: ['/assets/logo/logo.png'],
+    image: ['/assets/logo/1.jfif'],
     images: [
       {
         // name: 'EOB Logo',
@@ -648,6 +648,82 @@ export const portfolioItems = [
   filter: "Video Editing",
   video: "/assets/video/9.mp4",
 },
+
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/1.jpg",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/2.jpg",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/3.jpg",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/4.jpg",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/5.jpg",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/6.jfif",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing",
+  filter: "Web Designing",
+  imagess: "/assets/webdesign/7.jfif",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+// {
+//   title: "Modern Business Website",
+//   category: "Web Designing",
+//   filter: "Web Designing",
+//   imagess: "/assets/webdesign/7.jfif",
+//   description:
+//     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+// },
+
+// App development//
+{
+  title: "Modern Business Website",
+  category: "App Development",
+  filter: "App Development",
+  imagess: "/assets/app/1.png",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+
   // { title: 'Social Media Post', category: 'Social Media', filter: 'Social Media', image: 'https://cdn.magicpatterns.com/patterns/generated-images/2146550c-eab7-4918-81d0-4d7755a8ad6a.jpg' },
   // { title: 'Product Poster Design', category: 'Graphic Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/8918f984-b24f-44d1-83e0-3b0f420aa2a0.jpg' },
   // { title: 'Gaming Character', category: 'Character Design', filter: 'Graphic Design', image: 'https://cdn.magicpatterns.com/patterns/generated-images/23dd2dba-f268-47ca-9262-0c4176fb2d0c.jpg' },
@@ -660,4 +736,4 @@ export const contactInfo = [
   // { icon: MapPinIcon, label: 'Location', value: 'Pakistan', href: '' },
 ];
 
-export const footerServices = ['Graphic Designing', 'Web Designing', 'Video Editing', 'Web Development', 'Digital Marketing'];
+export const footerServices = ['Graphic Designing', 'Web Designing', 'Video Editing', 'Web Development', 'App Development'];

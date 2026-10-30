@@ -10,6 +10,7 @@ function Portfolio() {
   const [active, setActive] = useState(portfolioFilters[0]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const [preImage, setPreImage] = useState(null);
 
   const visible = portfolioItems.filter(
     (project) => project.filter === active
@@ -78,7 +79,6 @@ function Portfolio() {
         className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
         <AnimatePresence mode="popLayout">
-
           {visible.map((project, index) => (
             <motion.div
               key={project.video || project.title + "-" + index}
@@ -93,7 +93,41 @@ function Portfolio() {
               }}
               className="min-w-0"
             >
-              {project.video ? (
+              {project.category === "Web Designing" ||
+                project.category === "App Development" ? (
+                /* Web Design & App Development — Image + Zoom */
+
+                <div className="card-glow group h-full overflow-hidden rounded-xl border border-[#d96bff50]">
+
+                  <button
+                    type="button"
+                    onClick={() => setPreImage(project.imagess)}
+                    className="group relative block w-full cursor-zoom-in overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d96bff]"
+                    aria-label={`Zoom ${project.title} preview`}
+                  >
+                    <img
+                      src={project.imagess}
+                      alt={project.title}
+                      loading={index < 3 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      decoding="async"
+                      className="block aspect-[4/3] w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
+                    />
+
+                    {/* Zoom Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#090611]/20 transition-colors duration-300 group-hover:bg-[#090611]/55">
+                      <span className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-md mobile-view-hint md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                        Click to Zoom-in
+                        <ZoomIn className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Card Details */}
+
+                </div>
+
+              ) : project.video ? (
                 /* Video only — no card */
                 <video
                   src={project.video}
@@ -367,6 +401,38 @@ function Portfolio() {
                 </button>
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {preImage && (
+          <motion.div
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setPreImage(null)}
+          >
+            <button
+              type="button"
+              onClick={() => setPreImage(null)}
+              className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/60 p-3 text-white transition hover:border-[#d96bff] hover:text-[#d96bff]"
+              aria-label="Close image preview"
+            >
+              <X size={24} />
+            </button>
+
+            <motion.img
+              key={preImage}
+              src={preImage}
+              alt="Full-size logo preview"
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ duration: 0.25 }}
+              onClick={(event) => event.stopPropagation()}
+              className="max-h-[88vh] max-w-full rounded-xl object-contain shadow-[0_0_50px_rgba(168,60,245,0.2)]"
+            />
           </motion.div>
         )}
       </AnimatePresence>
