@@ -93,7 +93,7 @@ function Portfolio() {
               }}
               className="min-w-0"
             >
-              {project.category === "Web Designing" ||
+              {project.category === "Web Designing & Development" ||
                 project.category === "App Development" ? (
                 /* Web Design & App Development — Image + Zoom */
 

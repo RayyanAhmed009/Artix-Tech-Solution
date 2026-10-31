@@ -165,7 +165,7 @@ export const aboutPoints = [
   '24/7 Support & Communication',
 ];
 
-export const portfolioFilters = ['Graphic Designing','Web Designing','Web Development','Video Editing', 'App Development','Content Creator','Content & Copywriting','Branding','Digital Marketing'];
+export const portfolioFilters = ['Graphic Designing','Web Designing & Development','Video Editing', 'App Development','Content Creator','Content & Copywriting','Branding','Digital Marketing'];
 
 export const portfolioItems = [
   {
@@ -564,7 +564,7 @@ export const portfolioItems = [
     title: 'SKETCH TO COLORS',
     category: 'Graphic Designing',
     filter: 'Graphic Designing',
-    image: [''],
+    image: ['/assets/sketch to colors/Ugly Cartoon girl color image.png'],
     images: [
       //  {
       //   name: 'Anime boy Sketch',
@@ -651,57 +651,81 @@ export const portfolioItems = [
 
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
   imagess: "/assets/webdesign/1.jpg",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
   imagess: "/assets/webdesign/2.jpg",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
   imagess: "/assets/webdesign/3.jpg",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
   imagess: "/assets/webdesign/4.jpg",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
   imagess: "/assets/webdesign/5.jpg",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
-  imagess: "/assets/webdesign/6.jfif",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
+  imagess: "/assets/webdesign/6.png",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
 {
   title: "Modern Business Website",
-  category: "Web Designing",
-  filter: "Web Designing",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
   imagess: "/assets/webdesign/7.jfif",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
+  imagess: "/assets/webdesign/8.png",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
+  imagess: "/assets/webdesign/9.png",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "Web Designing & Development",
+  filter: "Web Designing & Development",
+  imagess: "/assets/webdesign/10.png",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
@@ -719,7 +743,23 @@ export const portfolioItems = [
   title: "Modern Business Website",
   category: "App Development",
   filter: "App Development",
-  imagess: "/assets/app/1.png",
+  imagess: "/assets/app/1.jpg",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "App Development",
+  filter: "App Development",
+  imagess: "/assets/app/2.png",
+  description:
+    "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
+},
+{
+  title: "Modern Business Website",
+  category: "App Development",
+  filter: "App Development",
+  imagess: "/assets/app/3.png",
   description:
     "A modern and visually engaging website design focused on clean layouts, intuitive navigation and a seamless user experience.",
 },
